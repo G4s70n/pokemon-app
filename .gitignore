@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# Dependencias
+package-lock.json
+
+# Archivos de configuración de Sequelize
+config/config.json
+
+# Carpeta de build de React (si se utiliza)
+build/
+
+# Carpeta de cache de Yarn (si se utiliza)
+.yarn/cache
+
+# Archivos de respaldo de VS Code
+.vscode/
+*.vscode/
+
+# Archivos temporales
+*.swp
+.DS_Store
+
