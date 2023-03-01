@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-//const { bookValidator } = require('../validations/booksValidator.js')
+const {  validatePokemonData, getByNameValidator, idValidator } = require('../validations/pokemonsValidator.js')
 const {
   getAllPokemons,
   getPokemonById,
@@ -15,7 +15,7 @@ const {
 
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', getByNameValidator ,async (req, res, next) => {
 
     try {
         const name = req.query.name;
@@ -38,6 +38,8 @@ router.get('/', async (req, res, next) => {
 });
  
 
+
+
 router.get("/types", async (req, res, next) => {
     try {
       const types = await getPokemonTypes();
@@ -50,7 +52,7 @@ router.get("/types", async (req, res, next) => {
 
 
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", idValidator, async (req, res, next) => {
   try {
     const id = req.params.id;
     const pokemon = await getPokemonById(id);
@@ -65,7 +67,7 @@ router.get("/:id", async (req, res, next) => {
 
 
 
-router.get("/evolutions/:id", async (req, res, next) => {
+router.get("/evolutions/:id", idValidator, async (req, res, next) => {
   try {
     const id = req.params.id;
     const evolutions = await getEvolutionsByPokemonId(id);
@@ -84,10 +86,9 @@ router.get("/evolutions/:id", async (req, res, next) => {
 
 
 
-router.post("/", async (req, res, next) => {
+router.post("/", validatePokemonData, async (req, res, next) => {
     try {
         const pokemonData = req.body;
-        console.log(pokemonData);
         const createPokemon = await postPokemon(pokemonData)
         res.status(201).send(createPokemon)
     } catch (error) {

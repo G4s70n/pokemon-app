@@ -244,9 +244,9 @@ const execution = async () =>{
   await getPokemonsByApi()
   await createEvolutionsFromApi();
   //await postPokemon(pokemon)
-  //await getEvolutionsByPokemonId()
   //await getAllPokemons()
   //getPokemonById()
+  //getEvolutionsByPokemonId()
   //getPokemonByName('charmander')
   //getPokemonTypes()
 
