@@ -4,7 +4,7 @@ const axios = require('axios');
 
 
 const url = "https://pokeapi.co/api/v2/pokemon";
-const max = 12;
+const max = 6;
 
 // Obtenemos los pokemons y sus características desde la API y los guardamos en la DB
 const getPokemonsByApi = async () => {
@@ -61,6 +61,7 @@ const getPokemonsByApi = async () => {
     throw new Error(`Error getting pokemons from API: ${error.message}`);
   }
 };
+
 
 
 
@@ -129,35 +130,43 @@ const getEvolutionsByPokemonId = async (pokemonId) => {
       attributes: ['evolutionId', 'name', 'image']
     });
 
-    console.log(evolutions);
+    //console.log(evolutions);
     return evolutions;
   } catch (error) {
     throw new Error(`Error getting evolutions: ${error.message}`);
   }
 };
 
+
+
+
 // Obtenemos todos los pokemons existentes en la DB
 const getAllPokemons = async () => {
   try {
     const allPokemons = await Pokemons.findAll();
-    console.log(allPokemons);
+    //console.log(allPokemons);
     return allPokemons;
   } catch (error) {
     throw new Error(`Error getting pokemons: ${error.message}`);
   }
 }
 
+
+
+
 // Obtenemos un pokemon por su ID
 const getPokemonById = async (pokemonId) =>{
   try {
     const pokemon = await Pokemons.findByPk(pokemonId);
-     console.log(pokemon);
-    
+     //console.log(pokemon);
+    return pokemon;
   } catch (error) {
     throw new Error(`Error getting pokemons by id: ${error.message}`);
     
   }
 }
+
+
 
 
 // Obtenemos un pokemon por su nombre
@@ -169,9 +178,6 @@ const getPokemonByName = async (pokemonName) =>{
         name: pokemonName,
       },
     });
-
-    if(pokemon === null) pokemon =`The pokemon ${pokemonName} does not exist in the db`;
-    console.log(pokemon);
     return pokemon;
   } catch (error) {
     throw new Error(`Error getting pokemons by name: ${error.message}`);
@@ -179,8 +185,10 @@ const getPokemonByName = async (pokemonName) =>{
 }
 
 
+
+
 // Obtenemos todos los tipos de pokemons desde la API
-const getPokemonByTypes = async () =>{
+const getPokemonTypes = async () =>{
   
   try {
     const getTypes = await axios.get('https://pokeapi.co/api/v2/type');
@@ -191,12 +199,14 @@ const getPokemonByTypes = async () =>{
     }
     })
     
-  console.log(types);
+  //console.log(types);
    return types
   } catch (error) {
     throw new Error(`Error getting types: ${error.message}`);
   }
 }
+
+
 
 // Creamos un pokemon, si los campos no obligatorios desde el cliente vienen vacios, le agregamos un 0 por defecto
 const postPokemon = async (p) =>{
@@ -218,7 +228,7 @@ const postPokemon = async (p) =>{
       height: p.height || 0,
     })
 
-    console.log('pokemon successfully created!');
+    //console.log('pokemon successfully created!');
     return 'Pokemon successfully created!'
   } catch (error) {
     throw new Error(`Error creating the pokemon in the DB: ${error.message}`);
@@ -237,14 +247,20 @@ const execution = async () =>{
   //await getEvolutionsByPokemonId()
   //await getAllPokemons()
   //getPokemonById()
-  //getPokemonByName('podongamon')
-  //getPokemonByTypes()
+  //getPokemonByName('charmander')
+  //getPokemonTypes()
 
 }
 
 execution()
 
 
+
 module.exports = {
+  getAllPokemons,
+  getPokemonById,
+  getPokemonByName,
   getEvolutionsByPokemonId,
+  getPokemonTypes,
+  postPokemon
 };
