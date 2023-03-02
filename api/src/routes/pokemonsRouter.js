@@ -15,7 +15,7 @@ const {
 
 
 
-router.get('/', getByNameValidator ,async (req, res, next) => {
+router.get('/',getByNameValidator,async (req, res, next) => {
 
     try {
         const name = req.query.name;
@@ -36,7 +36,8 @@ router.get('/', getByNameValidator ,async (req, res, next) => {
         res.status(400).send({ message: error.message })
     }
 });
- 
+  
+
 
 
 

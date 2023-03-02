@@ -241,8 +241,8 @@ const postPokemon = async (p) =>{
 
 
 const execution = async () =>{
-  await getPokemonsByApi()
-  await createEvolutionsFromApi();
+ // await getPokemonsByApi()
+  //await createEvolutionsFromApi();
   //await postPokemon(pokemon)
   //await getAllPokemons()
   //getPokemonById()

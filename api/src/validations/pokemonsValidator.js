@@ -24,17 +24,20 @@ const validatePokemonData = [
 ];
 
 
+const getByNameValidator = [  
+  query('name').isString().isLength({ max: 80 }).matches(/^[a-zA-Z]+$/).optional({ checkFalsy: true }),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      return next();
+    }
+    res.status(400).json({ errors: errors.array() });
+  },
+];
 
-const getByNameValidator = [
-    param('name').isString().isLength({ max: 80 }),
-    (req, res, next) => {
-      const errors = validationResult(req);
-      if (errors.isEmpty()) {
-        return next();
-      }
-      res.status(400).json({ errors: errors.array() });
-    },
-  ];
+
+
+  
 
 
   const idValidator = [
