@@ -3,7 +3,7 @@ const { conn } = require("./src/db");
 
 
 
-conn.sync( { force: false } ).then(() =>{
+conn.sync( { force: true } ).then(() =>{
     server.listen("3001", () => {
       console.log("Server: servidor corriendo en puerto 3001");
     });
