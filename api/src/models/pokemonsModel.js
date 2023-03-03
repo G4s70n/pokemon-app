@@ -56,6 +56,10 @@ module.exports = (sequelize) => {
        type: DataTypes.JSON,
       allowNull: true,
     },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     
   })
 
