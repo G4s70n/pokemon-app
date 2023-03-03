@@ -23,6 +23,7 @@ const getPokemonsByApi = async () => {
     const allPokemonsInfoPromises = pokemonsData.map(async (pokemon) => {
       const speciesUrl = pokemon.species.url;
       const speciesResponse = await axios.get(speciesUrl);
+      const color = speciesResponse.data.color.name;
       const evolutionChainUrl = speciesResponse.data.evolution_chain.url;
       const evolutionChainResponse = await axios.get(evolutionChainUrl);
       const evolutionChainData = evolutionChainResponse.data.chain;
@@ -52,6 +53,7 @@ const getPokemonsByApi = async () => {
          weight: pokemon.weight,
          height: pokemon.height,
          evolutions: evolutionsIds,
+         color: color,
         })
         await pokemonCreate.addEvolutions(evolutionsIds)
        
@@ -241,8 +243,8 @@ const postPokemon = async (p) =>{
 
 
 const execution = async () =>{
- // await getPokemonsByApi()
-  //await createEvolutionsFromApi();
+  await getPokemonsByApi()
+  await createEvolutionsFromApi();
   //await postPokemon(pokemon)
   //await getAllPokemons()
   //getPokemonById()
