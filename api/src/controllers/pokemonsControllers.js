@@ -125,14 +125,17 @@ const createEvolutionsFromApi = async () => {
 
 
 // Con el ID de un pokemon obtenemos el ID, name e image miniatura de su evolucion desde la DB
-const getEvolutionsByPokemonId = async (pokemonId) => {
+const getEvolutionsByPokemonId = async (evolutionId) => {
   try {
+    // Obtenemos el pokemonId para la evolutionId dada
+    const { pokemonId } = await Evolutions.findOne({ where: { evolutionId } });
+
+    // Buscamos todas las evoluciones relacionadas con ese pokemonId
     const evolutions = await Evolutions.findAll({
       where: { pokemonId },
-      attributes: ['evolutionId', 'name', 'image']
+      attributes: ['evolutionId', 'name', 'image'],
     });
 
-    //console.log(evolutions);
     return evolutions;
   } catch (error) {
     throw new Error(`Error getting evolutions: ${error.message}`);
@@ -241,7 +244,7 @@ const postPokemon = async (p) =>{
 
 
 
-
+// Primero esperar a que se creen las tablas en la DB y luego descomentar y ejecutar las funciones que traen los datos de la API y los agregan a las tablas.
 const execution = async () =>{
   await getPokemonsByApi()
   await createEvolutionsFromApi();
