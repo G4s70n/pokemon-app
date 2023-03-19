@@ -1,7 +1,5 @@
-const { Pokemons, Evolutions} = require('../db.js');
-const axios = require('axios');
-
-
+const { Pokemons, Evolutions } = require("../db.js");
+const axios = require("axios");
 
 const url = "https://pokeapi.co/api/v2/pokemon";
 const max = 6;
@@ -31,39 +29,44 @@ const getPokemonsByApi = async () => {
       const evolutionsIds = [];
       let currentEvolution = evolutionChainData;
       while (currentEvolution) {
-        const id = currentEvolution.species.url.split('/').slice(-2, -1)[0];
+        const id = currentEvolution.species.url.split("/").slice(-2, -1)[0];
         evolutionsIds.push(+id);
         currentEvolution = currentEvolution.evolves_to[0];
       }
 
 
- 
-        const pokemonCreate =  await Pokemons.create({
-         id: pokemon.id,
-         name: pokemon.name,
-         image: pokemon.sprites.other.home.front_default,
-         species: pokemon.species.name,
-         types: pokemon.types.map((type) => type.type.name),
-         hp: pokemon.stats[0].base_stat,
-         attack: pokemon.stats[1].base_stat,
-         defense: pokemon.stats[2].base_stat,
-         speed: pokemon.stats[5].base_stat,
-         specialAttack: pokemon.stats[3].base_stat,
-         specialDefense: pokemon.stats[4].base_stat,
-         weight: pokemon.weight,
-         height: pokemon.height,
-         evolutions: evolutionsIds,
-         color: color,
-        })
-        await pokemonCreate.addEvolutions(evolutionsIds)
-       
-    
+      const pokemonCreate = await Pokemons.create({
+        id: pokemon.id,
+        name: pokemon.name,
+        image: pokemon.sprites.other.home.front_default,
+        species: pokemon.species.name,
+        types: pokemon.types.map((type) => type.type.name),
+        hp: pokemon.stats[0].base_stat,
+        attack: pokemon.stats[1].base_stat,
+        defense: pokemon.stats[2].base_stat,
+        speed: pokemon.stats[5].base_stat,
+        specialAttack: pokemon.stats[3].base_stat,
+        specialDefense: pokemon.stats[4].base_stat,
+        weight: pokemon.weight,
+        height: pokemon.height,
+        evolutions: evolutionsIds,
+        color: color,
+      });
+
+      // Traemos los tipos del pokemon
+ /*      const pokemonWithTypes = await axios.get(pokemon.species.url);
+      const types = pokemonWithTypes.data["egg_groups"].map(
+        (type) => type.name
+      );
+      pokemonCreate.types = types;
+      await pokemonCreate.save(); */
+
+      await pokemonCreate.addEvolutions(evolutionsIds);
     });
   } catch (error) {
     throw new Error(`Error getting pokemons from API: ${error.message}`);
   }
 };
-
 
 
 
@@ -231,6 +234,7 @@ const postPokemon = async (p) =>{
       specialDefense: p.specialDefense || 0,
       weight: p.weight || 0,
       height: p.height || 0,
+      types: p.types,
     })
 
     //console.log('pokemon successfully created!');
@@ -250,7 +254,7 @@ const execution = async () =>{
   await createEvolutionsFromApi();
   //await postPokemon(pokemon)
   //await getAllPokemons()
-  //getPokemonById()
+  //getPokemonById(1)
   //getEvolutionsByPokemonId()
   //getPokemonByName('charmander')
   //getPokemonTypes()
@@ -258,7 +262,6 @@ const execution = async () =>{
 }
 
 execution()
-
 
 
 module.exports = {
