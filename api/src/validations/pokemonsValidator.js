@@ -1,10 +1,15 @@
 const { body, param, query, validationResult } = require('express-validator');
+const validator = require('validator');
 
 
-
-const validatePokemonData = [
-  body("name").isString().notEmpty().matches(/^[a-zA-Z]+$/),
-  body("image").isURL(),
+const validatePokemonData = [  body("name").isString().notEmpty().matches(/^[a-zA-Z]+$/),
+body("image").optional().custom((value, { req }) => {
+  if (value === null || validator.isURL(value)) {
+    return true;
+  } else {
+    throw new Error("Invalid value");
+  }
+}),
   body("species").isString().notEmpty(),
   body("hp").isInt(),
   body("attack").isInt(),
@@ -22,6 +27,7 @@ const validatePokemonData = [
     res.status(400).json({ errors: errors.array() });
   },
 ];
+
 
 
 const getByNameValidator = [  
