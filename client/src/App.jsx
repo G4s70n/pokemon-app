@@ -1,15 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Route } from 'react-router-dom';
+import './App.css';
+import NavBar from './components/NavBar/NavBar.jsx';
+import LandingPage from './components/LandingPage/LandingPage.jsx';
+import Home from './components/Home/Home.jsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <h1>Holaaa</h1>
+      <NavBar />
+      <Route exact path="/"> <LandingPage /> </Route>
+      <Route exact path="/home"> <Home /> </Route>
     </div>
   )
 }
 
 export default App
+
+
+

@@ -2,7 +2,7 @@ const { Pokemons, Evolutions } = require("../db.js");
 const axios = require("axios");
 
 const url = "https://pokeapi.co/api/v2/pokemon";
-const max = 6;
+const max = 12;
 
 // Obtenemos los pokemons y sus características desde la API y los guardamos en la DB
 const getPokemonsByApi = async () => {
@@ -224,7 +224,7 @@ const postPokemon = async (p) =>{
       
       id: count + 1,
       name: p.name,
-      image: p.image,
+      image: p.image || 'https://www.clipartmax.com/png/middle/190-1908923_open-pokeball-clip-art-pokeball-hd-png.png' ,
       species: p.species,
       hp: p.hp || 0,
       attack: p.attack || 0,
