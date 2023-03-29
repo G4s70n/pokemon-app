@@ -126,22 +126,69 @@ const createEvolutionsFromApi = async () => {
 
 
 
+// EL RESTO DE LAS FUNCIONES DEBEN MANEJAR LOS ERRORES COMO 'getEvolutionsByPokemonId' 
+// EN EL 'catch' SE DEBE IMPRIMIR EL MENSAJE Y ENVIARLE UN NULL A LA FUNCION DE LA RUTA
+// SI GENERO UN 'throw new Error' EN EL CATCH, SE CRASHEA NODEMON E INTERRUMPE SU EJECUCIÓN Y NO RESPONDE MÁS.
 
 // Con el ID de un pokemon obtenemos el ID, name e image miniatura de su evolucion desde la DB
 const getEvolutionsByPokemonId = async (evolutionId) => {
   try {
     // Obtenemos el pokemonId para la evolutionId dada
-    const { pokemonId } = await Evolutions.findOne({ where: { evolutionId } });
+    const evolution = await Evolutions.findOne({ where: { evolutionId } });
+
+    if (evolution === null) {
+      throw new Error(`Error getting evolutions: evolutionId ${evolutionId} not found in the database`);
+    }
+
+    const { pokemonId } = evolution;
 
     // Buscamos todas las evoluciones relacionadas con ese pokemonId
     const evolutions = await Evolutions.findAll({
       where: { pokemonId },
       attributes: ['evolutionId', 'name', 'image'],
     });
-
+    //console.log(evolutions);
     return evolutions;
   } catch (error) {
-    throw new Error(`Error getting evolutions: ${error.message}`);
+    console.error(`Error: ${error.message}`);
+    return null
+
+    // Otra forma mejor de manejar los errores:
+    /* 
+    console.error(error);
+    return {
+      error: true,
+      message: 'Error al consultar la base de datos',
+      statusCode: 500,
+      originalError: error
+    };
+    */
+
+    // En la función de la ruta que ejecuta esta función quedaría así:
+    /* 
+    router.get('/pokemon/:id', async (req, res) => {
+  try {
+    const pokemonId = req.params.id;
+    const pokemon = await getPokemonById(pokemonId);
+
+    if (pokemon.error) {
+      res.status(pokemon.statusCode).send({
+        error: true,
+        message: 'No se pudo obtener el Pokémon',
+        details: pokemon.message
+      });
+    } else {
+      res.send(pokemon);
+    }
+  } catch (error) {
+    res.status(500).send({
+      error: true,
+      message: 'Error al procesar la solicitud',
+      details: error.message
+    });
+  }
+});
+    */
   }
 };
 
@@ -254,8 +301,8 @@ const execution = async () =>{
   await createEvolutionsFromApi();
   //await postPokemon(pokemon)
   //await getAllPokemons()
-  //getPokemonById(1)
-  //getEvolutionsByPokemonId()
+  //getPokemonById(33)
+  //getEvolutionsByPokemonId(33)
   //getPokemonByName('charmander')
   //getPokemonTypes()
 

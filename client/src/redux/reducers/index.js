@@ -11,6 +11,7 @@ import {
   SORT_BY_ATTACK_ASC,
   SORT_BY_ATTACK_DES,
   SET_POKEMONS,
+  CLEAN_GLOBAL_STATE,
 } from "../actions/index.js";
 
 
@@ -33,6 +34,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
 
+// . . . . . . . . . . FILTRADO Y ORDENAMIENTO . . . . . . . . . . //
   function filterAndSort(filters, sorts) {
 
     let filtered = state.pokemons;
@@ -68,10 +70,11 @@ const rootReducer = (state = initialState, action) => {
       }
     }
   
-    return state.filtredPokemons = filtered;
+    state.filtredPokemons = filtered.length === 0 ? ['not found'] : filtered;
+
   }
 
-//filterAndSort(pokemons,[{type:'', originals-news: ''}], ['', ''] )
+// Así recibe los parámetros:   filterAndSort([{type:'', originals-news: ''}], ['', '',''] )
 const filterActivator = () => {
   let news = state.filtersAndSorts[1].value === 'news' ? 7 : null; //100
   let originals = state.filtersAndSorts[1].value === 'originals' ? 7 : null; //100
@@ -82,8 +85,10 @@ const filterActivator = () => {
     nuevos: news
   }],
   [state.filtersAndSorts[1].value, state.filtersAndSorts[2].value ,state.filtersAndSorts[3].value]
-  )
-};
+  )};
+
+// . . . . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . //
+
 
   switch (action.type) {
     case GET_ALL_POKEMONS:
@@ -169,6 +174,9 @@ const filterActivator = () => {
       return {
         ...state,
       };
+    case CLEAN_GLOBAL_STATE:
+      state.pokemonDetail = {};
+      state.pokemonEvolutions = [];
     default:
       return {
         ...state,

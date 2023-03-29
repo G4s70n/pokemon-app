@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar.jsx';
 import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
+import CardDetail from './components/CardDetail/CardDetail.jsx'
 
 
 function App() {
@@ -12,8 +13,11 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Route exact path="/"> <LandingPage /> </Route>
-      <Route exact path="/home"> <Home /> </Route>
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/home" component={Home} />
+        <Route path="/pokemon/:id" component={CardDetail} />
+      </Switch>
     </div>
   )
 }

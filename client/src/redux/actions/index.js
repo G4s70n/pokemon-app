@@ -4,7 +4,7 @@ export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS';
 export const GET_POKEMON_BY_NAME = 'GET_POKEMON_BY_NAME';
 export const GET_POKEMON_BY_ID = 'GET_POKEMON_BY_ID'; 
 export const GET_POKEMON_TYPES = 'GET_POKEMONS_TYPES';
-export const GET_POKEMON_EVOLUTIONS_BY_ID = 'GET_POKEMONS_EVOLUTIONS_BY_ID';
+export const GET_POKEMON_EVOLUTIONS_BY_ID = 'GET_POKEMON_EVOLUTIONS_BY_ID';
 
 //export const CREATED_POKEMON = 'CREATED_POKEMON';
 
@@ -18,7 +18,7 @@ export const SORT_BY_ATTACK_DES = 'SORT_BY_ATTACK_DES';
 
 export const SET_POKEMONS = 'SET_POKEMONS';
 
-
+export const CLEAN_GLOBAL_STATE ='CLEAN_GLOBAL_STATE';
 
 
   export const getAllPokemons = () => {
@@ -69,6 +69,10 @@ export const getPokemonById = (id) => {
         payload: response.data,
       })
     } catch (error) {
+      return dispatch({
+        type: GET_POKEMON_BY_ID,
+        payload: {error: 'El pokemon no existe en la DB'}
+      }) 
       console.error("Error getting pokemon by ID: " + error.response.data.message);
     }
   }
@@ -98,9 +102,8 @@ export const getPokemonEvolutionsById = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/pokemons/evolutions/${id}`);
-      console.log(response.data);
       return dispatch({
-        type: GET_POKEMONS_EVOLUTIONS_BY_ID,
+        type: GET_POKEMON_EVOLUTIONS_BY_ID,
         payload: response.data,
       })
     } catch (error) {
@@ -121,7 +124,6 @@ export const filterNewsPokemons = (option) =>{
 };
 
 export const sortByNameAsc = (option) =>{
-  console.log(option);
   return {type: SORT_BY_NAME_ASC, payload: option}
 };
 
@@ -140,3 +142,10 @@ export const sortByAttackDes = (option) =>{
 export const setPokemons = (value) => {
   return {type: SET_POKEMONS, payload: value}
 };
+
+
+export const cleanState = (value) => {
+  return {type: CLEAN_GLOBAL_STATE}
+};
+
+

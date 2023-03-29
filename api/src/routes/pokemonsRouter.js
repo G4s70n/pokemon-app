@@ -53,18 +53,20 @@ router.get("/types", async (req, res, next) => {
 
 
 
-router.get("/:id", idValidator, async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const pokemon = await getPokemonById(id);
-    if (pokemon === null)
-      res.status(404).send({ message: `Pokemon with id ${id} not found` });
-
-    res.status(200).send(pokemon);
-  } catch (error) {
-    res.status(400).send({ message: error.message });
-  }
-});
+  router.get("/:id", idValidator, async (req, res, next) => {
+    try {
+      const id = req.params.id;
+      const pokemon = await getPokemonById(id);
+      if (pokemon === null) {
+        res.status(404).send({ message: `Pokemon with id ${id} not found` });
+      } else {
+        res.status(200).send(pokemon);
+      }
+    } catch (error) {
+      res.status(500).send({ message: error.message });
+    }
+  });
+  
 
 
 
@@ -72,9 +74,9 @@ router.get("/evolutions/:id", idValidator, async (req, res, next) => {
   try {
     const id = req.params.id;
     const evolutions = await getEvolutionsByPokemonId(id);
-    console.log(evolutions);
 
-    if(!evolutions[0]){
+
+    if(!evolutions){
         res.status(404).send({ message: `Evolutions with id ${id} not found`})
     }else {
         res.status(200).send(evolutions);

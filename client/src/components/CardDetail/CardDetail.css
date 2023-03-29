@@ -1,0 +1,137 @@
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: auto;
+    height: 1000px;
+    align-items: center;
+    border: 3px solid blue;
+  }
+  
+  .card h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .card span {
+    margin-right: 10px;
+  }
+  
+  .imagenes-evolucion {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    border: 1px solid red;
+    display: inline;
+  }
+
+
+
+  .flex-wrapper {
+    width:300px;
+  }
+  
+  .single-chart {
+    width: 100%;
+    border: 4px solid blue;
+  }
+
+  
+  .circular-chart {
+    display: inline;
+    margin: 10px auto;
+    max-width: 30%;
+    max-height: 350px;
+    overflow: visible;
+    position: relative;
+  }
+
+
+  .circle-bg {
+    fill: none;
+    stroke: #b3b3b3;
+    stroke-width: 3.8;
+  }
+
+.circle {
+fill: none;
+stroke-width: 2.4;
+stroke-linecap: square; /* cambiar de "round" a "square" */
+animation: progress 1.5s ease-out forwards;
+}
+
+
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+  
+  .circular-chart.orange .circle {
+    stroke: #ff9f00;
+  }
+  
+
+  .percentage {
+    font-family: sans-serif;
+    font-size: 0.5em;
+    text-anchor: middle;
+  }
+  
+  .label {
+    font-size: 10px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    transform: translate(0, 23px);
+  }
+  
+
+
+   
+  .button-regresar {
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button-regresar:after {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  
+  .button-regresar:hover:after {
+    animation: ripple_401 1s ease-out;
+  }
+  
+  @keyframes ripple_401 {
+    0% {
+      width: 5px;
+      height: 5px;
+      opacity: 1;
+    }
+  
+    100% {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+    }
+  }
+  

@@ -17,6 +17,8 @@ import {
 
 
 
+
+
 const Home = () => {
 
   //Accedemos al Estado Global
@@ -71,7 +73,6 @@ const Home = () => {
     <div className="home-container">
 
     
-
       <div className="container-options">
 
       <div>
@@ -122,23 +123,36 @@ const Home = () => {
         <button type="button" onClick={handleClearFilters}>Limpiar filtros</button>
 
       </div>
+            
 
-      
-      {filterPokemons.length > 0 ? (
-        filterPokemons.map((pokemon) => (
-          <Card
-            key={pokemon.id}
-            id={pokemon.id}
-            name={pokemon.name}
-            types={pokemon.types}
-            image={pokemon.image}
-            height={pokemon.height}
-            weight={pokemon.weight}
-          />
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
+{
+  filterPokemons[0] === 'not found' ? (
+    <div>
+      <img src="src\assets\Home\sin-resultados.png" alt="imagen sin resultados" />
+      <h2>No se encontró ningún pokemon con los filtros seleccionados </h2>
+    </div>
+  ) : (
+    filterPokemons.length > 0 ? (
+      filterPokemons.map((pokemon) => (
+        <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
+        <Card
+          id={pokemon.id}
+          name={pokemon.name}
+          types={pokemon.types}
+          image={pokemon.image}
+          height={pokemon.height}
+          weight={pokemon.weight}
+        />
+      </Link>
+      ))
+    ) : (
+      <div>
+      <img src="../../public/loading.gif" alt="gif loading" />
+      <h2>Loading...</h2>
+      </div>
+    )
+  )
+}
 
     </div>
   );

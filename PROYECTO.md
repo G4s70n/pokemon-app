@@ -204,3 +204,146 @@ IMÁGENES REFERENCIA:
   https://cdn.dribbble.com/users/1125971/screenshots/5619897/media/1d368ee90eb2a0d32e7075e39c6c3e14.png?compress=1&resize=400x300
 
   https://mir-s3-cdn-cf.behance.net/projects/404/358057104011053.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
+CÓDIGO CÍRCULO DE CARGA PROGRESIVO
+Para alinear el texto editar los % en el HTML
+
+https://codepen.io/alvarotrigo/pen/abLvEjW
+
+
+HTML:
+<div class="dashboard">
+  <svg>
+    <circle class="bg" cx="57" cy="57" r="52" />
+    <circle class="meter-1" cx="57" cy="57" r="52" />
+    <text class="text text-line1" x="50%" y="40%">Carga</text>
+    <text class="text text-line2" x="50%" y="50%">75%</text>
+  </svg>
+  <svg>
+    <circle class="bg" cx="57" cy="57" r="52" />
+    <circle class="meter-2" cx="57" cy="57" r="52" />
+    <text class="text text-line1" x="50%" y="50%">Carga</text>
+    <text class="text text-line2" x="50%" y="50%">50%</text>
+  </svg>
+  <svg>
+    <circle class="bg" cx="57" cy="57" r="52" />
+    <circle class="meter-3" cx="57" cy="57" r="52" />
+    <text class="text text-line1" x="50%" y="50%">Carga</text>
+    <text class="text text-line2" x="50%" y="50%">25%</text>
+  </svg>
+</div>
+
+
+CSS:
+Editar los segundos de la animación.
+
+body {
+  display: grid;
+  height: 100vh; 
+  place-items: center;
+  background: #243b47;
+}
+
+.dashboard {
+  display: flex;
+}
+
+svg {
+  width: 114px;
+  height: 114px;
+  margin: 1em;
+}
+
+.bg {
+  fill: none;
+  stroke-width: 10px;
+  stroke: #1A2C34;
+}
+
+[class^="meter-"] {
+  fill: none;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  
+}
+
+.meter-1 {
+  stroke-dasharray: 360;
+  stroke-dashoffset: 100;
+  stroke: aqua;
+  animation: progress-1 1s ease-out;
+}
+.meter-2 {
+  stroke: lime;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 160;
+  animation: progress-2 1.7s ease-out;
+}
+.meter-3 {
+  stroke: magenta;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 250;
+  animation: progress-3 .9s ease-out;
+}
+
+@keyframes progress-1 {
+    from {
+        stroke-dashoffset: 360;
+    }
+    to {
+        stroke-dashoffset: 100;
+    }
+}
+
+@keyframes progress-2 {
+  from {
+    stroke-dashoffset: 360;
+  }
+  to {
+    stroke-dashoffset: 160;
+  }
+}
+
+@keyframes progress-3 {
+  from {
+    stroke-dashoffset: 360;
+  }
+  to {
+    stroke-dashoffset: 250;
+  }
+}
+
+.text {
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.text-line2 {
+  dy: 1.2em;
+}
+
+
+// 1) Terminar CardDetail: 
+        debe mostrar lado A y B.
+        traer datos pokemon.
+      
+      Crear buscador en Home.
+
+      Crear paginado.
+
+      Crear componente CreatePokemon con formlario controlado.
+
+      Crear componente About.
+
+      Crear ruta y componente Not Found.
+          Usar boton 'social'.
+      
+      Crear componente Footer.
+        Debe mostrarse en todas las rutas.
+
+
