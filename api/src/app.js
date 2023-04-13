@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require('cors');
 const routes = require('./routes/index');
 
 
@@ -7,7 +8,8 @@ const routes = require('./routes/index');
 const server = express();
 server.name = 'API';
 
-
+//cors permite que el servidor reciba solicitudes de un dominio diferente al que se encuetra a lojado
+server.use(cors());
 
 server.use(express.json({ limit: '50mb' }));
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
