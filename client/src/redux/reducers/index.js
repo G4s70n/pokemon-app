@@ -12,6 +12,7 @@ import {
   SORT_BY_ATTACK_DES,
   SET_POKEMONS,
   CLEAN_GLOBAL_STATE,
+  SEARCH_POKEMON,
 } from "../actions/index.js";
 
 
@@ -29,6 +30,7 @@ const initialState = {
     { name: "attack-asc-des", value: null },
   ],
 };
+
 
 
 
@@ -76,8 +78,8 @@ const rootReducer = (state = initialState, action) => {
 
 // Así recibe los parámetros:   filterAndSort([{type:'', originals-news: ''}], ['', '',''] )
 const filterActivator = () => {
-  let news = state.filtersAndSorts[1].value === 'news' ? 7 : null; //100
-  let originals = state.filtersAndSorts[1].value === 'originals' ? 7 : null; //100
+  let news = state.filtersAndSorts[1].value === 'news' ? 100 : null; //100
+  let originals = state.filtersAndSorts[1].value === 'originals' ? 100 : null; //100
 
   filterAndSort([{
     type: state.filtersAndSorts[0].value, 
@@ -126,7 +128,6 @@ const filterActivator = () => {
         ...state,
       };
     case FILTER_NEWS_POKEMONS:
-      console.log('ejecutando types');
       action.payload === 'todos'
       ? state.filtersAndSorts[1].value = null
       : state.filtersAndSorts[1].value = action.payload;
@@ -177,6 +178,12 @@ const filterActivator = () => {
     case CLEAN_GLOBAL_STATE:
       state.pokemonDetail = {};
       state.pokemonEvolutions = [];
+    case SEARCH_POKEMON:
+      state.filtredPokemons = state.pokemons.filter(obj => obj.name.startsWith(action.payload));
+      if(action.payload !== undefined && state.filtredPokemons.length === 0) state.filtredPokemons = ['not found'];
+      return{
+        ...state
+      }
     default:
       return {
         ...state,

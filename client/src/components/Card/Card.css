@@ -8,8 +8,8 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    width: 150px;
-    height: 200px;
+    width: 300px;
+    height: 500px;
     border: 5px solid black;
     overflow: hidden;
   }
@@ -36,6 +36,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: black;
   }
   
   .types {

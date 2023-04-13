@@ -1,15 +1,18 @@
 import React from "react";
 import './Card.css';
+'./Card.css';
+
 
 
 const Card = ({id, name, types, height, weight, image}) => {
+
     return (
         <div class="card">
             <span class="id-pokemon">{`#${id}`}</span>
             
             {
-               id > 12  
-               ?  <img class="imagen-principal" src={image} alt="gif pokemon" />           
+                id > 100  
+                ?  <img class="imagen-principal" src={image} alt="pokemon" />           
                :  <img class="imagen-principal" src={`src/assets/Card/pokemonsGIFs/${id}.webp`} alt="gif pokemon" /> 
             }
 

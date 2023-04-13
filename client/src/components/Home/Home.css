@@ -33,3 +33,51 @@
     outline: none;
   }
   
+
+
+  /* BOTONES PAGINADO */
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    color: black;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #000000;
+  }
+  .page-item:hover {
+    background-color: #000000;
+  }
+  
+  .active {
+    background-color: #007bff;
+    color: #030303;
+  }
+
+
+  /* Botones filtrado */
+  button:disabled,
+button.active {
+  background-color: rgb(220, 220, 220);
+  color: rgb(190, 190, 190);
+  border-color:rgb(220, 220, 220);
+
+  /* display: none; */
+}
+
+.current-page {
+  background-color: rgb(99, 164, 254);
+  color: white;
+  border: 2px solid rgb(99, 164, 254);
+}

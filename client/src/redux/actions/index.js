@@ -20,6 +20,8 @@ export const SET_POKEMONS = 'SET_POKEMONS';
 
 export const CLEAN_GLOBAL_STATE ='CLEAN_GLOBAL_STATE';
 
+export const SEARCH_POKEMON = 'SEARCH_POKEMON';
+
 
   export const getAllPokemons = () => {
     return async (dispatch) => {
@@ -81,11 +83,9 @@ export const getPokemonById = (id) => {
 
 
 export const getPokemonTypes = () => {
-
   return async (dispatch) => {
     try {
       const response = await axios.get('http://localhost:3001/pokemons/types');
-      //console.log(response.data);
       return dispatch({
         type: GET_POKEMON_TYPES,
         payload: response.data,
@@ -95,6 +95,9 @@ export const getPokemonTypes = () => {
     }
   }
 };
+  
+
+
 
 
 export const getPokemonEvolutionsById = (id) => {
@@ -149,3 +152,6 @@ export const cleanState = (value) => {
 };
 
 
+export const searchPokemon = (pokemonName) => {
+  return {type: SEARCH_POKEMON, payload: pokemonName}
+};

@@ -57,7 +57,7 @@
 .circle {
 fill: none;
 stroke-width: 2.4;
-stroke-linecap: square; /* cambiar de "round" a "square" */
+stroke-linecap: square; 
 animation: progress 1.5s ease-out forwards;
 }
 

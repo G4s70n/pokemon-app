@@ -1,0 +1,30 @@
+.button {
+    text-decoration: none;
+    padding: 14px 24px;
+    color: #121212;
+    border: 1px solid #181818;
+    overflow: hidden;
+    position: relative;
+    transition: color .5s .25s;
+    border-radius: 3px;
+    background: transparent;
+  }
+
+
+button:before {
+ content: "🡠 ";
+ opacity: 0;
+ margin-left: -15px;
+ transition-duration: 0.2s;
+}
+
+button:hover:before {
+ margin-left: 0px;
+ opacity: 1;
+}
+
+button:hover {
+ color: black;
+ background: rgba(0, 0, 0, 0.02);
+ border: solid 1px gainsboro;
+}

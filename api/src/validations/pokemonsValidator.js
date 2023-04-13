@@ -10,7 +10,6 @@ body("image").optional().custom((value, { req }) => {
     throw new Error("Invalid value");
   }
 }),
-  body("species").isString().notEmpty(),
   body("hp").isInt(),
   body("attack").isInt(),
   body("defense").isInt(),

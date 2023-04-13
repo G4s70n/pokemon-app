@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
     },
     species: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     hp: {
       type: DataTypes.INTEGER,

@@ -10,7 +10,7 @@ const {
   postPokemon,
 } = require("../controllers/pokemonsControllers.js");
 
-
+const {imgsPokemonsConIa} = require("../controllers/ImagesCreatorController.js");
 
 
 
@@ -89,7 +89,7 @@ router.get("/evolutions/:id", idValidator, async (req, res, next) => {
 
 
 
-router.post("/", validatePokemonData, async (req, res, next) => {
+router.post("/create", validatePokemonData, async (req, res, next) => {
     try {
         const pokemonData = req.body;
         const createPokemon = await postPokemon(pokemonData)
@@ -99,6 +99,17 @@ router.post("/", validatePokemonData, async (req, res, next) => {
     }
   });
 
+
+
+  router.post('/images', async (req, res) => {
+    try {
+      const pokemonPrompt = req.body.prompt;
+      const resultado = await imgsPokemonsConIa(pokemonPrompt);
+      res.send(resultado);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
 
 
 

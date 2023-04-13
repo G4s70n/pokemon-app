@@ -2,7 +2,7 @@ const { Pokemons, Evolutions } = require("../db.js");
 const axios = require("axios");
 
 const url = "https://pokeapi.co/api/v2/pokemon";
-const max = 12;
+const max = 100;
 
 // Obtenemos los pokemons y sus características desde la API y los guardamos en la DB
 const getPokemonsByApi = async () => {
@@ -72,6 +72,7 @@ const getPokemonsByApi = async () => {
 
 // Obtenemos las evoluciones de los pokemons desde la API y los guardamos en la DB
 const createEvolutionsFromApi = async () => {
+
   try {
     const pokemonApi = await axios.get(`${url}?offset=0&limit=${max}`);
     const pokemons = pokemonApi.data.results;
@@ -133,22 +134,27 @@ const createEvolutionsFromApi = async () => {
 // Con el ID de un pokemon obtenemos el ID, name e image miniatura de su evolucion desde la DB
 const getEvolutionsByPokemonId = async (evolutionId) => {
   try {
-    // Obtenemos el pokemonId para la evolutionId dada
-    const evolution = await Evolutions.findOne({ where: { evolutionId } });
 
-    if (evolution === null) {
-      throw new Error(`Error getting evolutions: evolutionId ${evolutionId} not found in the database`);
+    if(evolutionId > max){
+      return [{
+        "evolutionId":0,"name":"desconocido","image":"https://i.postimg.cc/NjNHmZt3/image.png"},
+        {"evolutionId":0,"name":"desconocido","image":"https://i.postimg.cc/NjNHmZt3/image.png"},
+        {"evolutionId":0,"name":"desconocido","image":"https://celebrateurbanbirds.org/wp-content/uploads/2016/08/rock-pigeon-1024x1024.png"
+      }]
     }
 
+    // Obtenemos el pokemonId para la evolutionId dada
+    const evolution = await Evolutions.findOne({ where: { evolutionId } });
+    
     const { pokemonId } = evolution;
+        // Buscamos todas las evoluciones relacionadas con ese pokemonId
+        const evolutions = await Evolutions.findAll({
+          where: { pokemonId },
+          attributes: ['evolutionId', 'name', 'image'],
+        });
+        console.log(evolutions);
+        return evolutions
 
-    // Buscamos todas las evoluciones relacionadas con ese pokemonId
-    const evolutions = await Evolutions.findAll({
-      where: { pokemonId },
-      attributes: ['evolutionId', 'name', 'image'],
-    });
-    //console.log(evolutions);
-    return evolutions;
   } catch (error) {
     console.error(`Error: ${error.message}`);
     return null
@@ -266,6 +272,9 @@ const getPokemonTypes = async () =>{
 // Creamos un pokemon, si los campos no obligatorios desde el cliente vienen vacios, le agregamos un 0 por defecto
 const postPokemon = async (p) =>{
   try {
+    p.name = p.name.toLowerCase()
+    p.types = p.types.map(type => type.toLowerCase())
+    
     const count = await Pokemons.count();
     const newPokemon = await Pokemons.create({
       
@@ -285,7 +294,7 @@ const postPokemon = async (p) =>{
     })
 
     //console.log('pokemon successfully created!');
-    return 'Pokemon successfully created!'
+    return {message: 'Successfully created', id: newPokemon.id}
   } catch (error) {
     throw new Error(`Error creating the pokemon in the DB: ${error.message}`);
   }
@@ -297,15 +306,14 @@ const postPokemon = async (p) =>{
 
 // Primero esperar a que se creen las tablas en la DB y luego descomentar y ejecutar las funciones que traen los datos de la API y los agregan a las tablas.
 const execution = async () =>{
-  await getPokemonsByApi()
-  await createEvolutionsFromApi();
+/*   await getPokemonsByApi()
+  await createEvolutionsFromApi(); */
   //await postPokemon(pokemon)
   //await getAllPokemons()
   //getPokemonById(33)
   //getEvolutionsByPokemonId(33)
   //getPokemonByName('charmander')
   //getPokemonTypes()
-
 }
 
 execution()
