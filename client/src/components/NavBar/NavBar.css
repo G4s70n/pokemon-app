@@ -1,10 +1,5 @@
-nav {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+.nav {
+
   }
   
   ul {
@@ -27,3 +22,11 @@ nav {
     text-decoration: underline;
   }
   
+  .nav-container{
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space;
+    align-items: center;
+    padding: 10px;
+  }

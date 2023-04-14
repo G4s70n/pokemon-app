@@ -1,0 +1,29 @@
+.profile-container{
+    display: inline-block;
+    background-color: rgba(137, 43, 226, 0.221);
+    width: 150px;
+    height: 40px;
+    padding: 0px;
+}
+
+.profile-container img{
+    width: 25px;
+    border-radius: 100%;
+    margin: 0px;
+}
+
+.button-salir{
+    display: none;
+    width: 150px;
+    background-color: rgba(182, 115, 245, 0.221);
+    color: white;
+}
+
+.profile-container:hover .button-salir{
+    display: block;
+}
+
+.container-buttons{
+    border:1px solid red;
+    width: 300px;
+}

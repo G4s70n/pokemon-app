@@ -7,6 +7,10 @@ import {namesCreator} from "./namesCreator";
 import NavBar from "../NavBar/NavBar.jsx";
 import Footer from '../Footer/Footer.jsx';
 import './Create.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginSingUp from "../LoginSingUp/LoginSingUp.jsx";
+
+
 
 const FormPokemon = () => {
 
@@ -108,6 +112,16 @@ const FormPokemon = () => {
     console.log(name);
     setForm((prevValues) => ({ ...prevValues, name: name }))
   };
+
+
+
+
+  const {isAuthenticated} = useAuth0();
+
+
+  if(isAuthenticated === false)return(<LoginSingUp/>)
+
+ 
 
   return (
     <div>
