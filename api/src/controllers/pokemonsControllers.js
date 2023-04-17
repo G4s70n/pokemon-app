@@ -53,14 +53,6 @@ const getPokemonsByApi = async () => {
         color: color,
       });
 
-      // Traemos los tipos del pokemon
- /*      const pokemonWithTypes = await axios.get(pokemon.species.url);
-      const types = pokemonWithTypes.data["egg_groups"].map(
-        (type) => type.name
-      );
-      pokemonCreate.types = types;
-      await pokemonCreate.save(); */
-
       await pokemonCreate.addEvolutions(evolutionsIds);
     });
   } catch (error) {
@@ -306,7 +298,7 @@ const postPokemon = async (p) =>{
 
 // Primero esperar a que se creen las tablas en la DB y luego descomentar y ejecutar las funciones que traen los datos de la API y los agregan a las tablas.
 const execution = async () =>{
-/*   await getPokemonsByApi()
+/*await getPokemonsByApi()
   await createEvolutionsFromApi(); */
   //await postPokemon(pokemon)
   //await getAllPokemons()

@@ -59,7 +59,6 @@ export const getPokemonByName = (name) => {
 
 
 
-
 export const getPokemonById = (id) => {
 
   return async (dispatch) => {
@@ -98,8 +97,6 @@ export const getPokemonTypes = () => {
   
 
 
-
-
 export const getPokemonEvolutionsById = (id) => {
 
   return async (dispatch) => {
@@ -126,21 +123,26 @@ export const filterNewsPokemons = (option) =>{
   return {type: FILTER_NEWS_POKEMONS, payload: option}
 };
 
+
 export const sortByNameAsc = (option) =>{
   return {type: SORT_BY_NAME_ASC, payload: option}
 };
+
 
 export const sortByNameDes = (option) =>{
   return {type: SORT_BY_NAME_DES, payload: option}
 };
 
+
 export const sortByAttackAsc = (option) =>{
   return {type: SORT_BY_ATTACK_ASC, payload: option}
 };
 
+
 export const sortByAttackDes = (option) =>{
   return {type: SORT_BY_ATTACK_DES, payload: option}
 };
+
 
 export const setPokemons = (value) => {
   return {type: SET_POKEMONS, payload: value}

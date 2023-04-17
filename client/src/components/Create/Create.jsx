@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer.jsx';
 import './Create.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginSingUp from "../LoginSingUp/LoginSingUp.jsx";
+import Modal from "../Modal/Modal";
 
 
 
@@ -121,7 +122,9 @@ const FormPokemon = () => {
 
   if(isAuthenticated === false)return(<LoginSingUp/>)
 
- 
+ const borrar = ()=>{
+  setNewPokemon(true)
+ }
 
   return (
     <div>
@@ -294,20 +297,12 @@ const FormPokemon = () => {
   {/* //----------- SECCIÓN C ----------- */}
   {seccion === 3 && (
       <div class="seccion">
+        
         {newPokemon && (
-          /* ESTO DEBE SER UNA VENTANA MODAL */
-          <div>
-            <div>
-              <span>Pokemon creado con éxito!</span>
-              <a href={`http://127.0.0.1:5173/pokemon/${newPokemon.id}`}>
-                Aceptar
-              </a>
-            </div>
-          </div>
+          <Modal message="Pokemon creado con éxito!" /* onClose={handleCloseModal} */ id={newPokemon.id}/>
         )}
         
-
-        {newPokemon === false && (
+          {newPokemon && <Modal message="Pokemon creado con éxito!" /* onClose={handleCloseModal} */ id={newPokemon.id}/>}
           <div>
             <h2>Seccion C</h2>
             <div>
@@ -341,9 +336,10 @@ const FormPokemon = () => {
             </div>
 
             <button onClick={handleSeccion} name="atras">Atrás</button>
-            <input onClick={handleCrearButton} disabled={imgs.length === 0} type="submit" value="Crear" />
+           {/*  <input onClick={handleCrearButton} disabled={imgs.length === 0} type="submit" value="Crear" /> */}
+            <p onClick={borrar}>crear</p>{/* borrar tambien la funion 'borrar' */}
           </div>
-)}
+
 </div>
 )}
 

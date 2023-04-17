@@ -9,7 +9,6 @@ import Profile from "../Profile/Profile";
 const NavBar = () => {
   return (
     <div class="nav-container">
-      <Profile/>
       <nav class="nav">
         <ul>
           <li>
@@ -23,6 +22,7 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
+      <Profile/>
     </div>
   );
 };

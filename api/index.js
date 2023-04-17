@@ -3,30 +3,22 @@ const { conn } = require("./src/db");
 
 
 
-conn.sync( { force: false } ).then(() =>{
-    server.listen("3001", () => {
-      console.log("Server: servidor corriendo en puerto 3001");
-    });
+conn.sync({ force: false }).then(() => {
+  server.listen("3001", () => {
+    console.log("Server: servidor corriendo en puerto 3001");
   });
-  
+});
 
 
-  conn
+
+conn
   .authenticate()
   .then(() => {
     console.log("Data Base: conectado a la base de datos con éxito!");
   })
   .catch((err) => {
-    console.error("Data Base: error al conectarse a la base de datos!:", err.message);
+    console.error(
+      "Data Base: error al conectarse a la base de datos!:",
+      err.message
+    );
   });
-
-
-
-
-
-
-
-
-
-
-
