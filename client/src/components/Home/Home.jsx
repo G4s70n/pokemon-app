@@ -94,7 +94,7 @@ import {
     const pageNumber = page ? parseInt(page) : 1;
 
     const [currentPage, setCurrentPage] = useState(pageNumber);
-    const itemsPerPage = 2;
+    const itemsPerPage = 6;
     const totalPages = Math.ceil(filterPokemons.length / itemsPerPage);
   
     const visiblePokemons = filterPokemons.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -150,21 +150,29 @@ import {
   
               
         {/* --------------------   Buscador    -------------------- */}
-          <div>
-            <form>
-              <label for="buscador">Buscar:</label>
-              <input onChange={handleSearch} type="search" id="buscador" name="buscador" placeholder="ingresa un nombre" />
-            </form>
-          </div>
+
       
+          <form class="form">
+            <label for="buscador">
+                <input class="input" onChange={handleSearch} type="search" id="buscador" name="buscador" placeholder="ingresa un nombre" />
+                <div class="fancy-bg"></div>
+                <div class="search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                        <g>
+                            <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                        </g>
+                    </svg>
+                </div>
+            </label>
+          </form>
 
         {/* --------------------   Filtrado   -------------------- */}
-            <div className="container-options">
+            <div className="container-filters">
       
             <div>
-            <label>Filtrar por tipo:</label>
+            <label className="home-filters-label">Filtrar por:</label>
             <select name="lista1" value={selectedValue.lista1} onChange={handleFilterByType}>
-              <option value="" disabled selected>Tipo</option> // opción por defecto
+              <option className="home-select-default" value="" disabled selected>Tipo</option> // opción por defecto
               <option value="todos">todos</option>
                 {types.map((e) => (
                <option key={e.typeId} value={e.name}>
@@ -175,9 +183,8 @@ import {
       
       
             <div>
-              <label>Filtrar por nuevos:</label>
               <select name="lista2" value={selectedValue.lista2}  onChange={handleFilterNewsPokemons}>
-              <option value="" disabled selected>Creados</option> 
+              <option className="home-select-default" value="" disabled selected>Creados</option> 
                 <option key='0' value="todos">todos</option>
                 <option key='1' value="originals">originales</option>
                 <option key='2' value="news">nuevos</option>
@@ -186,9 +193,9 @@ import {
       
       
               <div>
-              <label>Ordenar por nombre:</label>
+              <label className="home-filters-label">Ordenar por:</label>
               <select name="lista3" value={selectedValue.lista3}  onChange={handleSortByName}>
-              <option value="" disabled selected>Nombre</option> 
+              <option className="home-select-default" value="" disabled selected>Nombre</option> 
                 <option key='0' value="todos">todos</option>
                 <option key='1' value="name-asc">ascendente</option>
                 <option key='2' value="name-desc">descentende</option>
@@ -197,30 +204,31 @@ import {
       
       
               <div>
-              <label>Ordenar por ataque:</label>
               <select name="lista4" value={selectedValue.lista4}  onChange={handleSortByAttack}>
-              <option value="" disabled selected>Ataque</option> 
+              <option  className="home-select-default" value="" disabled selected>Ataque</option> 
                 <option key='0' value="todos">todos</option>
                 <option key='1' value="attack-asc">ascendente</option>
                 <option key='2' value="attack-desc">descentende</option>
               </select>
               </div>
       
-              <button type="button" onClick={handleClearFilters}>Limpiar filtros</button>
+              <button className="home-btn-filters" type="button" onClick={handleClearFilters}>Limpiar filtros</button>
       
             </div>
   
   {
     filterPokemons[0] === 'not found' ? (
 
-      <div>
+      <div className="home-container-sin-resultados" >
         <img src="src\assets\Home\sin-resultados.png" alt="imagen sin resultados" />
         <h2>No se encontró ningún pokemon </h2>
       </div>
 
     ) : (
       <div>
-         {visiblePokemons.map((pokemon) => (
+
+        <div  className="home-card-container">
+        {visiblePokemons.map((pokemon) => (
            <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
           <Card
             id={pokemon.id}
@@ -229,28 +237,33 @@ import {
             image={pokemon.image}
             height={pokemon.height}
             weight={pokemon.weight}
+            color={pokemon.color}
           />
         </Link>
         ))}
+        </div>
 
         {/* -------------------------   Botones paginado  ↓  ------------------------- */}
+          <div className="home-btn-paginado"> 
 
-        <button disabled={currentPage === 1} onClick={handlePage} name='1'>1</button>
-        <button disabled={currentPage === 1} onClick={handlePage} name='PREV'>PREV</button>
-        {!hideButtonA && <button>...</button>}
-        {pages.map((page) => (
-          <button
-            key={page}
-            className={currentPage === page ? 'current-page' : ''}
-            onClick={handlePage} name={page}
-          >
-            {page}
-          </button>
-        ))}
-        {totalPages === 2 && <button key="2" disabled={currentPage === 2} onClick={handlePage} name='2'>2</button>}
-        {!hideButtonB && <button>...</button>}
-        <button disabled={currentPage === totalPages} onClick={handlePage} name='NEXT'>NEXT</button>
-        <button disabled={currentPage === totalPages} onClick={handlePage} name={totalPages}>{totalPages}</button>
+              <button disabled={currentPage === 1} onClick={handlePage} name='1'>1</button>
+              <button className="home-btn-prev" disabled={currentPage === 1} onClick={handlePage} name='PREV'>PREV</button>
+              {!hideButtonA && <button className="home-btn-points">...</button>}
+              {pages.map((page) => (
+                <button
+                  key={page}
+                  className={currentPage === page ? 'current-page' : ''}
+                  onClick={handlePage} name={page}
+                >
+                  {page}
+                </button>
+              ))}
+              {totalPages === 2 && <button key="2" disabled={currentPage === 2} onClick={handlePage} name='2'>2</button>}
+              {!hideButtonB && <button className="home-btn-points">...</button>}
+              <button className="home-btn-next" disabled={currentPage === totalPages} onClick={handlePage} name='NEXT'>NEXT</button>
+              <button disabled={currentPage === totalPages} onClick={handlePage} name={totalPages}>{totalPages}</button>
+
+          </div>
 
         {/* -------------------------   Botones paginado  ↑  ------------------------- */}
 

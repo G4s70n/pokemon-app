@@ -1,29 +1,77 @@
-.profile-container{
-    display: inline-block;
-    background-color: rgba(137, 43, 226, 0.221);
-    width: 150px;
-    height: 40px;
-    padding: 0px;
+
+.container-buttons{
+    display: flex;
+    flex-direction: column;
 }
 
-.profile-container img{
-    width: 25px;
-    border-radius: 100%;
-    margin: 0px;
+.container-buttons button{
+    margin: .3em 0px;
+    color: #c2c2c4;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    font-size: .9em;
+    padding: .3em .8em;
+    cursor: pointer;
+    font-size: .9em;
 }
+
+
+.container-buttons i{
+    font-size: 14px;
+}
+
+
+.profile-icon-button:hover{
+    color: #f36e94;
+}
+.container-buttons button:hover{
+    color: #f36e94;
+}
+
+
+/* Cuando está registrado */
+
+.profile-container{
+    position: relative;
+    display: flex;
+    height: 40px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-right: 1em;
+    color: #f36e94;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
 
 .button-salir{
     display: none;
-    width: 150px;
-    background-color: rgba(182, 115, 245, 0.221);
+    width: 100px;
     color: white;
+    position: absolute;
+    top: 2em;
+    left: 1.1em;
 }
 
 .profile-container:hover .button-salir{
     display: block;
 }
 
-.container-buttons{
-    border:1px solid red;
-    width: 300px;
+.profile-container span{
+    margin-left: .8em;
 }
+
+.profile-container button{
+    background: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 60px;  
+    margin-top: .3em;
+}
+
+.profile-container button:hover{
+    background-color: #4a5882;
+    cursor: pointer;
+}
+

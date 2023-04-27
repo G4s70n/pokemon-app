@@ -1,74 +1,413 @@
-
-
-
-
 .card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    width: 300px;
-    height: 500px;
-    border: 5px solid black;
-    overflow: hidden;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  outline: 2px solid rgb(41, 41, 41);
+  width: 240px;
+  position: relative;
+ /* Color por defecto para los Pokemons nuevos */
+ background: rgb(36,157,195);
+ background: radial-gradient(circle, rgba(36,157,195,1) 35%, rgba(61,88,105,1) 100%);
+  height: 385px;
+  margin-bottom: 4em;
+  margin-right:2em;
+  outline: 2px solid rgba(0, 0, 0, 0);
+}
+
+
+.card::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), transparent);
+}
+
+.card-cont-peso-altura::before {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  right: 0px;
+  height: 200px;
+  width: 240px;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.578), transparent);
+}
+
+
+.card:hover{
+      Filter: grayscale(1) contrast(1); 
+      
+}
+
+.card-image{
+  position: absolute;
+  z-index: 10;
+  margin-top: -38px;
+  height: 220px;
+  left: 20%;
+  filter: contrast(6);
+  filter: drop-shadow(-2.5rem 0.43rem 0.31rem rgba(0, 0, 0, 0.317));
+}
+
+.card-id{
+  color: #fff;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: absolute;
+  top: .4em;
+  left: .5em;
+}
+
+  
+.card-name{
+  position: absolute;
+  z-index: 1;
+  top: 55%;
+  color: rgb(224, 224, 224);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  border-top: 1px solid #252b31;
+  width: 75%;
+  padding-top: .3em;
+}
+
+.card-name::first-letter {
+  text-transform: uppercase;
+}
+
+  
+
+/* TYPES SUB-NAME */
+.card-container-types{
+  position: absolute;
+  width: 100%;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, 70%);
+  z-index:1;
+}
+
+.card-types-1,
+.card-types-2{
+  display: inline-flex;
+  border-radius: 5px;
+  padding: .1em .5em;
+  margin: .2em .3em;
+  position:relative;
+}
+
+
+
+.card-types-1::before,
+.card-types-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  backdrop-filter: blur(15px);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+
+.card-type-text{
+  font-size: larger;
+  font-weight: 100;
+  font-size: .8rem;
+}
+
+
+.card-svg-info-1,
+.card-svg-info-2{
+  width: 13px;
+  margin-right: .5em;
+}
+
+
+/* PESO Y ALTURA */
+.card-cont-peso-altura{
+  width: 90%;
+  left: 5%;
+  border-radius: 5px;
+  position:absolute;
+  bottom: 0%;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+  padding: .6em .5em;
+  background: rgb(31,31,31);
+  background: linear-gradient(180deg, rgba(31,31,31,1) 0%, rgba(5,5,5,1) 52%);
+}
+
+
+
+.card-bloque-height,
+.card-bloque-weight{
+  width: 50%;
+}
+
+.card-bloque-height{
+  border-right: 1.2px solid rgb(134, 134, 134);
+}
+
+
+.card-value-peso,
+.card-value-altura{
+  display: inline;
+  color: rgb(255, 255, 255);
+  font-size: .8rem;
+}
+
+
+
+
+.logo-peso,
+.logo-altura {
+  width: 10px;
+  height: 15px;
+  margin-right: 7px;
+  display: inline;
+}
+
+
+
+.card-height-span,
+.card-weight-span{
+  display: block;
+  font-size: .7rem;
+  color: rgb(201, 201, 201);
+}
+
+.card-color-span{
+   position:absolute;
+   font-size: 1.3rem;
+   bottom: 5px;
+   display:none;
+ }
+
+  /* BACKGROUND-COLOR CARDS */
+  .card-color-red {
+    background: rgb(175,53,53);
+    background: radial-gradient(circle, rgb(142, 42, 42) 35%, rgba(6, 6, 6, 0.824) 110%);
   }
   
-  .id-pokemon {
-    background-color: #F1C40F;
-    border-radius: 20px;
-    color: #fff;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding: 5px 10px;
+  .card-color-orange {
+    background: rgb(142,97,42);
+background: radial-gradient(circle, rgba(142,97,42,1) 35%, rgba(6,6,6,1) 110%);
   }
   
-  .imagen-principal {
-    width: 80px;
-    height: auto;
+  .card-color-yellow {
+    background: rgb(142,124,42);
+background: radial-gradient(circle, rgba(142,124,42,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-green {
+    background: rgb(89, 184, 114);
+    background: radial-gradient(circle, rgb(71, 144, 53) 35%, rgba(20,37,15,1) 110%);
+  }
+
+  .card-color-blue {
+    background: rgb(42,91,142);
+    background: radial-gradient(circle, rgba(42,91,142,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-purple {
+    background: rgb(95,42,142);
+background: radial-gradient(circle, rgba(95,42,142,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-pink {
+    background: rgb(142,42,136);
+background: radial-gradient(circle, rgba(142,42,136,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-brown {
+    background: rgb(142,67,42);
+    background: radial-gradient(circle, rgba(142,67,42,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-grey {
+    background: rgb(75,75,75);
+background: radial-gradient(circle, rgba(75,75,75,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-black {
+    background: rgb(25,41,73);
+background: radial-gradient(circle, rgba(25,41,73,1) 35%, rgba(6,6,6,1) 110%);
+  }
+  
+  .card-color-white {
+    background: rgb(159,159,159);
+background: radial-gradient(circle, rgba(159,159,159,1) 35%, rgba(61,88,105,1) 110%);
+  }
+  
+
+  /* BORDER TYPES COLOR */
+
+  .card-type-border-normal{
+    border: 1.4px  solid #a8a878; 
+  }
+  .card-type-border-fighting{
+    border: 1.4px  solid #c03028; 
+  }
+  .card-type-border-flying{
+    border: 1.4px  solid #a890f0; 
+  }
+  .card-type-border-poison{
+    border: 1.4px  solid #a040a0; 
+  }
+  .card-type-border-ground{
+    border: 1.4px  solid #e0c068; 
+  }
+  .card-type-border-rock{
+    border: 1.4px  solid #b8a038; 
+  }
+  .card-type-border-bug{
+    border: 1.4px solid #a8b820; 
+  }
+  .card-type-border-ghost{
+    border: 1.4px solid #705898; 
+  }
+  .card-type-border-steel{
+    border: 1.4px solid #b8b8d0; 
+  }
+  .card-type-border-fire{
+    border: 1.4px solid #f08030; 
+  }
+  .card-type-border-water{
+    border: 1.4px solid #6890f0; 
+  }
+  .card-type-border-grass{
+    border: 1.4px solid #78c850; 
+  }
+  .card-type-border-electric{
+    border: 1.4px solid #f8d030; 
+  }
+  .card-type-border-psychic{
+    border: 1.4px solid #f85888; 
+  }
+  .card-type-border-ice{
+    border: 1.4px solid #98d8d8; 
+  }
+  .card-type-border-dragon{
+    border: 1.4px solid #7038f8; 
+  }
+  .card-type-border-dark{
+    border: 1.4px solid #705848; 
+  }
+  .card-type-border-fairy{
+    border: 1.4px solid #ee99ac; 
+  }
+  .card-type-border-unknown{
+    border: 1.4px solid #68a090; 
+  }
+  .card-type-border-shadow{
+    border: 1.4px solid #414b4d; 
+  }
+  
+
+  /* LOGO BACKGROUND CARD */
+  .card-svg-bck-2 {
+    display: none !important;
+  }
+
+  .card-svg-bck-1 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -110%;
+    left: 50%;
+    transform: translate(-50%, -110%);
+    filter: invert(100%) opacity(30%) blur(1px);
+  }
+
+
+  .card-new .card-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 1px solid red
+    z-index: -1;
   }
-  
-  .name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: black;
+
+  .card-new .card-svg-bck-1{
+    display:none;
   }
-  
-  .types {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    color: green;
+
+  .card-new{
+    background: transparent;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    animation: outline 1s infinite;
   }
-  
-  .icons-types {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    background-color: green;
+
+  .card-new .card-name{
+    border-top: 1px solid rgb(161, 161, 161);
   }
-  
-  .logo-peso,
-  .logo-altura {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
+
+  .card-new .card-id{
+    background-color:rgba(32, 32, 32, 0.557);
+    padding: .1em .3em;
+    border-radius:30px;
+    font-size: 1.3rem;
   }
+
   
-  .high-weight {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+
+ 
+/* Estilo para la imagen */
+.card-new .card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilo para la animación */
+@keyframes zoom {
+  0% {
+    transform: scale(1);
   }
-  
-  .high-weight span {
-    margin-right: 10px;
+  50% {
+    transform: scale(1.2);
   }
-  
-  
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Aplicar la animación al contenedor */
+.card-new .card-image {
+  animation: zoom 5s infinite;
+}
+
+
+.card-span-n{
+  display:none;
+}
+
+.card-span-new{
+  display: initial;
+  background-color:rgb(46, 169, 46);
+  padding: 0em .5em;
+  border-radius:30px;
+  font-size: 1.3rem;
+  position:absolute;
+  top: 2.2em;
+  left: .5em;
+}

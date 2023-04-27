@@ -1,16 +1,15 @@
-/* Bajamos la saturación de todas las imágenes */
+/* 
 img {
     filter: saturate(0.3);
     width: 70px;
   }
   
-  /* Aumentamos la saturación de las imágenes seleccionadas y les aplicamos una animación */
+
   input:checked + label img {
     filter: saturate(2);
     animation: giro-espejo 2s infinite;
   }
-  
-  /* Creamos una animación simple */
+
   @keyframes example {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -44,4 +43,4 @@ img {
 .selected-img{
   border: 5px solid green;
   width: 400px;
-}
+} */

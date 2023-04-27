@@ -16,7 +16,7 @@ const About = () => {
   };
 
   return (
-    <div>
+    <div className="about-container">
       <div>
         <NavBar />
       </div>

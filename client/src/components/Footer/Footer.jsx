@@ -6,8 +6,9 @@ import "./Footer.css"
 const Footer = () => {
     return(
         <footer>
-            <p>Hecho por Gastón Nieto 💻😃</p>
-            <Link to='about'>
+            <p>Desarrollado por Gastón Nieto 💻😃</p>
+            <span>|</span>
+            <Link to='/about'>
             <a>Contacto</a>
             </Link>
         </footer>

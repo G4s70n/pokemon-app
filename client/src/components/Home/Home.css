@@ -1,83 +1,317 @@
 .home-container{
-    width: 100%;
-    margin: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  padding-top: 0.1px;
 }
 
-.container-options select {
-    appearance: none;
-    background: url("data:image/svg+xml,<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat;
-    background-position: right 10px top 50%;
-    background-size: 16px auto;
-    border: none;
-    border-radius: 3px;
-    box-shadow: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 40px 10px 10px;
-    transition: all 0.2s ease-in-out;
-    width: 100%;
-  }
-  
-  .container-options select:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .container-options select:focus {
-    background-color: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1), 0 16px 24px rgba(0, 0, 0, 0.2);
-    color: #333;
-    outline: none;
-  }
-  
 
 
-  /* BOTONES PAGINADO */
-
-  .pagination-container {
-    display: flex;
-    justify-content: center;
-    color: black;
-  }
-  
-  .page-item {
-    margin: 0 5px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 38px;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    color: #000000;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    background-color: #000000;
-  }
-  .page-item:hover {
-    background-color: #000000;
-  }
-  
-  .active {
-    background-color: #007bff;
-    color: #030303;
-  }
-
-
-  /* Botones filtrado */
-  button:disabled,
-button.active {
-  background-color: rgb(220, 220, 220);
-  color: rgb(190, 190, 190);
-  border-color:rgb(220, 220, 220);
-
-  /* display: none; */
+ /* BARRA DE BÚSQUEDA */
+.form{
+  margin-left: 38%;
+  margin-right: auto;
+  margin-bottom: 4em;
+  margin-top: 2.6em;
 }
 
-.current-page {
-  background-color: rgb(99, 164, 254);
+
+.form {
+  --input-text-color: #fff;
+  --input-bg-color: #283542;
+  --focus-input-bg-color: transparent;
+  --text-color: #949faa;
+  --active-color: #1b9bee;
+  --width-of-input: 500px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+/* form style */
+.form {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+ align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+  isolation: isolate;
+}
+/* a fancy bg for showing background and border when focus. */
+.fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--input-bg-color);
+  border-radius: 30px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+/* label styling */
+label {
+  width: 100%;
+  padding: 0.8em;
+  height: 40px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.search,.close-btn {
+  position: absolute;
+}
+/* styling search-icon */
+.search {
+  fill: var(--text-color);
+  left: var(--inline-padding-of-input);
+}
+/* svg -- size */
+svg {
+  width: 17px;
+  display: block;
+}
+
+
+/* styling of input */
+.input {
+  color: var(--input-text-color);
+  width: 100%;
+  margin-inline: 2em 0em;
+  background: none;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--text-color)
+}
+
+.input::-moz-placeholder {
+  color: var(--text-color)
+}
+
+.input:-ms-input-placeholder {
+  color: var(--text-color)
+}
+
+.input::-ms-input-placeholder {
+  color: var(--text-color)
+}
+
+.input::placeholder {
+  color: var(--text-color)
+}
+/* input background change in focus */
+.input:focus ~ .fancy-bg {
+  border: 1px solid var(--active-color);
+  background: var(--focus-input-bg-color);
+}
+/* search icon color change in focus */
+.input:focus ~ .search {
+  fill: var(--active-color);
+}
+/* showing close button when typing */
+.input:not(:placeholder-shown) ~ .close-btn {
+  opacity: 1;
+  visibility: visible;
+}
+/* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
+
+
+
+
+/* FILTROS */
+.container-filters div{
+  text-align: start;
+}
+
+.home-filters-label{
+text-align: center;
+display: flex;
+justify-content: center;
+}
+
+
+select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: white;
-  border: 2px solid rgb(99, 164, 254);
+  width: 100%;
+  border-radius: 10px;
+  padding: .5em 0em .5em 0em;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-inline: 2em 0em;
+  border: none;
+  background: #283542;
+  background: #283542;
+  margin-left: 0px;
+  margin-bottom: 2em;
+}
+
+.home-select-default{
+  text-align: center;
+}
+
+
+
+select:hover {
+  border-color: #1b9bee; /* Cambia el color del borde al verde cuando el usuario pasa el mouse */
+  background: none;
+  background: rgba(11, 149, 203, 0.242);
+  outline: 1px solid #1b9bee;
+  
+}
+
+
+select:focus {
+  border-color: #1b9bee; /* Cambia el color del borde al verde cuando el usuario pasa el mouse */
+  background: none;
+  background: rgba(11, 149, 203, 0.242);
+  outline: 1px solid #1b9bee;
+}
+
+option{
+  background-color: #1c2431;
+  padding:0 30px 0 10px;
+  border-top:white solid 1px;
+  font-size: 1.1rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+
+
+
+/* BARRA SCROLL */
+/*Chrome y Safari*/
+select::-webkit-scrollbar {
+  width: 6px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #a7a7a7;
+}
+
+/*Firefox*/
+select {
+  scrollbar-width: thin;
+}
+
+select::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #a7a7a7;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #CCCCCC;
+  border-radius: 5px;
+}
+
+
+
+
+.container-filters{
+  border-right: 1px solid #5c5d60;
+  background: #1c2431;
+  display: inline-block;
+  position: fixed;
+  top: 1px;
+  left: 0px;
+  min-width: 17vw;
+  height: 100%;
+  padding: 7em .7em 0 .7em;
+}
+
+.home-card-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 18%;
+  justify-content: space-evenly;
+  width: auto;
+  padding: 0em 2em 0em 2em;
+  min-height: 100vh;
+}
+
+.home-btn-filters{
+  background-color:#1b9bee;
+  border-radius: 7px;
+  border:none;
+  padding: .4em .8em;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: .9rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-btn-filters:hover{
+  background-color:#51a9e4;
+}
+
+.home-container-sin-resultados{
+  margin-top: -110px;
+  margin-right: auto;
+  margin-left: 40%;
+  width: 40%;
+  text-align: center;
+  
+}
+
+.home-container-sin-resultados img{
+  width: 75%;
+}
+
+.home-container-sin-resultados h2{
+  margin-top: -25px;
+}
+
+
+.home-btn-paginado{
+  text-align: center;
+  margin: 3em 0 3em 20%;
+}
+
+.home-btn-paginado button{
+  background: #1c2431;
+    border: none;
+    color: inherit;
+    outline: 2px solid white;
+    width: 35px;
+    height:35px;
+    border-radius:100%;
+    font-size: 1rem;
+    box-sizing: border-box; 
+    margin: .2em;
+    cursor: pointer;
+}
+
+.home-btn-paginado button:disabled {
+  background-color: gray;
+}
+
+
+.home-btn-next,
+.home-btn-prev{
+  width: auto !important;
+  border-radius: 20px !important;
+}
+
+.home-btn-points{
+  outline:none!important;
+  font-size:1.3rem!important;
+}
+
+.current-page{
+  background-color: rgba(64, 135, 216, 0.685)!important;
 }

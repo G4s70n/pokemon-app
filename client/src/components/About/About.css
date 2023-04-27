@@ -1,12 +1,11 @@
-body {
-	text-align: center;
-	font-family: Arial;
-	background: #f8f8f8;
+.about-container{
+	min-height: 100vh;
 }
+
 
 .buttons {
 	margin-top: 160px;
-  
+	text-align: center;
 }
 
 .buttons a {

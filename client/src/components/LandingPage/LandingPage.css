@@ -1,68 +1,163 @@
-.logo{
-    width: 75%;
-    height: 40%;
-    text-align: center;
+.btn {
+  background: #fde55a;
+  color: #313430;
+  padding: 4% 10%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0px 5px 10px 1px #dd6e42
 }
 
-.pokebola{
-    width: 25%;
+.btn:hover {
+  background: #fff;
+  color: #000;
+
 }
 
-.container-logos{
-    width: 70%;
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 6% 10%;
+    border-radius: 1rem;
+  }
 }
 
-/* Boton */
+
+.landing-cont {
+  background: linear-gradient(312deg, rgba(0, 188, 212, 1) 0%, rgba(7, 58, 187, 1) 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-cont-logos {
+  background: linear-gradient(130deg, rgba(246, 101, 54, 1) 0%, rgba(255, 184, 57, 1) 100%);
+  width: 80%;
+  height: auto;
+  display: flex;
+  border-radius: 7px;
+  box-shadow: 1px 6px 29px 0px rgba(84, 84, 84, 0.75);
+  -webkit-box-shadow: 1px 6px 29px 0px rgba(84, 84, 84, 0.75);
+  -moz-box-shadow: 1px 6px 29px 0px rgba(84, 84, 84, 0.75);
+  padding: 5%;
+  position: relative;
+}
+
+
+.landing-cont-logo-poke {
+  width: 44%;
+}
+
+.landing-cont-imgs {
+  border: 4px solid white;
+
+}
+
+.landing-logo-pokemon {
+  width: 100%;
+  display: block;
+}
+
+.landing-pokebola {
+  width: 35%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -3%;
+}
+
+.landing-img-pikachu {
+  width: 50%;
+  height: auto;
+  position: absolute;
+  top: -1.1em;
+  right: -1.1em;
+  -webkit-animation: movePikachu 2s ease-in-out infinite alternate;
+  animation: movePikachu 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes movePikachu {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes movePikachu {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.landing-h1 {
+  font-size: 1.4rem;
+  width: 100%;
+  color: #fcfffe;
+}
+
 .cssbuttons-io-button {
-    background: #A370F0;
-    color: white;
-    font-family: inherit;
-    padding: 0.35em;
-    padding-left: 1.2em;
-    font-size: 17px;
-    font-weight: 500;
-    border-radius: 0.9em;
-    border: none;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 0 1.6em -0.6em #714da6;
-    overflow: hidden;
-    position: relative;
-    height: 2.8em;
-    padding-right: 3.3em;
+  margin-left: 50%;
+}
+
+
+.landing-cont-logos {
+  background-image: url('../../assets/LandingPage/circles.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+@media screen and (max-width: 768px) {
+  .landing-cont {
+    align-items: start;
+    padding-top: 5%;
+    min-width: 370px;
+    min-height: 100%;
   }
-  
-  .cssbuttons-io-button .icon {
-    background: white;
-    margin-left: 1em;
+
+  .landing-cont-logos {
+    width: 95%;
+    padding-bottom: 5em;
+    margin-bottom: 2em;
+  }
+
+  .landing-cont-logo-poke {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .landing-pokebola {
+    margin-top: 1em;
+    margin-bottom: 3em;
+  }
+
+  .landing-img-pikachu {
+    width: 30%;
+    height: auto;
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.2em;
-    width: 2.2em;
-    border-radius: 0.7em;
-    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
-    right: 0.3em;
-    transition: all 0.3s;
+    left: 38%;
+    top: 32%;
+    -webkit-animation: movePikachu 2s ease-in-out infinite alternate;
+    animation: movePikachu 2s ease-in-out infinite alternate;
   }
-  
-  .cssbuttons-io-button:hover .icon {
-    width: calc(100% - 0.6em);
-  }
-  
-  .cssbuttons-io-button .icon svg {
-    width: 1.1em;
-    transition: transform 0.3s;
-    color: #7b52b9;
-  }
-  
-  .cssbuttons-io-button:hover .icon svg {
-    transform: translateX(0.1em);
-  }
-  
-  .cssbuttons-io-button:active .icon {
-    transform: scale(0.95);
-  }
-  
+}

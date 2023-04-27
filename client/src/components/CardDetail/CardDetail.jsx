@@ -12,6 +12,10 @@ import "./CardDetail.css";
 import NavBar from "../NavBar/NavBar.jsx";
 import Footer from '../Footer/Footer.jsx';
 
+import { VscArrowRight } from 'react-icons/Vsc';
+
+
+
 
 const CardDetail = (props) => {
   
@@ -34,7 +38,7 @@ const CardDetail = (props) => {
   const newsPokemons = pokemons.filter((pokemon) => pokemon.id > idNews);
   const max = newsPokemons.length - 1;
 
-  console.log(newsPokemons)
+  console.log(pokemonDetail)
   const handleLadoAoB = (event) => {
     setLado(event.target.value);
   };
@@ -48,17 +52,17 @@ const CardDetail = (props) => {
 
   if (pokemonDetail.error) {
     return (
-      <div>
+      <div className="card-detail-not-found">
         <div>
           <NavBar />
         </div>
-        <img
+        <img className="card-d-img-not-found"
           src="\src\assets\PokemonDetail\not-found.png"
           alt="imagen pikachu"
         />
-        <h2>Pokemon no encontrado</h2>
+        <h2>Oops! Pokemon no encontrado...</h2>
         <Link to="/home">
-          <button class="button-regresar" type="button">
+          <button class="card-d-button-regresar" type="button">
             ⟵ Regresar
           </button>
         </Link>
@@ -67,50 +71,67 @@ const CardDetail = (props) => {
   }
 
   return (
-    <div>
+    <div className="card-detail-container">
       <div><NavBar /></div>
-      <div className="card">
+      <div className="card-detail">
         {Object.keys(pokemonDetail).length > 0 &&
         evolutionsDetail.length > 0 &&
         newsPokemons.length > 0 ? (
           <>
-            <div>
-              <img src={pokemonDetail.image} alt="imagen pokemon" />
-            </div>
+            <div className="card-d-container-pokemon">
+            <div class="background" style={{ backgroundImage: `url(${pokemonDetail.image})`}}></div>
+              <img className={`card-d-img-principal card-d-img-prinp-${params.id > idNews ? 'new' :''}`} src={pokemonDetail.image} alt="imagen pokemon" />
+           
 
-            <div>
+            <div className="card-d-name-id">
+              <div className="card-d-container-id-name">
+                <span className={`card-d-id card-d-id-color-${pokemonDetail.types[0]}`}>{'#' + pokemonDetail.id}</span>
+                <h1 className="card-d-name">{pokemonDetail.name}</h1>
+              </div>
               {pokemonDetail.types && pokemonDetail.types.length > 0 ? (
-                pokemonDetail.types.map((type) => (
-                  <span key={type}>{type}</span>
+                pokemonDetail.types.map((type, index) => (
+                  <span className={`card-d-type-${index} card-type-${type}`} key={type}>{type}</span>
                 ))
               ) : (
                 <span></span>
               )}
-              <span>{pokemonDetail.id}</span>
-              <h1>{pokemonDetail.name}</h1>
+            </div>
             </div>
 
             {lado === "A" ? (
               <div className="lado-A">
-                <div>
-                  <span>{pokemonDetail.color}</span>
-                  <span>
-                    {(pokemonDetail.height / 10).toFixed(1).toString() + " m"}
-                  </span>
-                  <span>
-                    {(pokemonDetail.weight / 10).toFixed(1).toString() + " kg"}
-                  </span>
+                <div className="card-d-info-A">
+                  <div className="background-a"></div>
+                  <div>
+                    <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Color</span>
+                    <span>{pokemonDetail.color ? pokemonDetail.color :'____'}</span>
+                  </div>
+
+                  <div>
+                    <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Altura</span>
+                    <span>{(pokemonDetail.height / 10).toFixed(1).toString() + " m"}</span>
+                  </div>
+                  
+                  <div className="card-d-div-info-3">
+                    <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Peso</span>
+                    <span>{(pokemonDetail.weight / 10).toFixed(1).toString() + " kg"}</span>
+                  </div>
+
                 </div>
 
-                <div>
-                  <span>
+                <div className="card-d-evolutions-container">
+                  <span className="card-d-evolutions">
                     {params.id > idNews ? "Evoluciones random" : "Evoluciones"}
                   </span>
-                  {evolutionsDetail.map((evolution) => {
+                  
+                  
+                  {evolutionsDetail.map((evolution, index) => {
+
                     let newPokemonEvolution =
                       Math.floor(Math.random() * (max - 0 + 1)) + 0;
                     return (
-                      <div key={evolution.evolutionId}>
+                      <div className={`card-d-div-img-evolution card-d-img-evolution-${params.id > idNews ? 'new' : ''}`} key={evolution.evolutionId}>
+
                         <img
                           className="imagenes-evolucion"
                           src={
@@ -120,15 +141,18 @@ const CardDetail = (props) => {
                           }
                           alt="imagen evolución"
                         />
-                        <span>
+
+                          <div className={`card-d-flecha-${evolutionsDetail.length > index+1 ?index :null}`}><VscArrowRight/></div>
+
+                        <span className="card-d-name-evolution">
                           {params.id > idNews
                             ? newsPokemons[newPokemonEvolution].name
                             : evolution.name}
                         </span>
-                        <span>
+                        <span className="card-d-id-evolution">
                           {params.id > idNews
-                            ? newsPokemons[newPokemonEvolution].id
-                            : evolution.evolutionId}
+                            ? '#' + newsPokemons[newPokemonEvolution].id
+                            : '#' + evolution.evolutionId}
                         </span>
                       </div>
                     );
@@ -137,146 +161,151 @@ const CardDetail = (props) => {
               </div>
             ) : (
               <div className="lado-B">
-                <span>caracteristicas</span>
-                <div class="flex-wrapper">
+                <div className="background-b"></div>
+                <span className="card-d-caracteristicas">Caracteristicas</span>
+               
                   <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.hp}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.hp}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        HP
-                      </text>
-                    </svg>
+                   <div className="card-d-circles">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.hp}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.hp}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          HP
+                        </text>
+                      </svg>
 
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.attack}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.attack}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        Attack
-                      </text>
-                    </svg>
+                      <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.attack}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.attack}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          Attack
+                        </text>
+                      </svg>
 
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.defense}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.defense}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        Defense
-                      </text>
-                    </svg>
+                      <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.defense}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.defense}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          Defense
+                        </text>
+                      </svg>
+                   </div>
 
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.specialAttack}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.specialAttack}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        Sp. Attack
-                      </text>
-                    </svg>
+                    <div className="card-d-circles">
+                      <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.specialAttack}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.specialAttack}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          Sp. Attack
+                        </text>
+                      </svg>
 
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.specialDefense}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.specialDefense}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        Sp. Defense
-                      </text>
-                    </svg>
+                      <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.specialDefense}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.specialDefense}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          Sp. Defense
+                        </text>
+                      </svg>
 
-                    <svg viewBox="0 0 36 36" class="circular-chart orange">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${pokemonDetail.speed}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="18" y="21" class="percentage">
-                        {`${pokemonDetail.speed}%`}
-                      </text>
-                      <text x="18" y="20" class="label">
-                        Speed
-                      </text>
-                    </svg>
+                      <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path
+                          class="circle-bg"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <path
+                          class={`circle circle-${pokemonDetail.types[0]}`}
+                          stroke-dasharray={`${pokemonDetail.speed}, 100`}
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="21" class="percentage">
+                          {`${pokemonDetail.speed}%`}
+                        </text>
+                        <text x="18" y="20" class="label">
+                          Speed
+                        </text>
+                      </svg>
+                    </div>
                   </div>
-                </div>
+
               </div>
             )}
 
-            <div>
+            <div className="card-d-buttons">
               <button onClick={handleLadoAoB} value="A" type="button">
                 Info
               </button>
@@ -292,7 +321,9 @@ const CardDetail = (props) => {
           </div>
         )}
       </div>
+      <div className="card-d-footer">
         <Footer />
+      </div>
     </div>
   );
 };
