@@ -6,6 +6,7 @@ export const getImages = async (prompt) => {
         const response = await axios.post('http://localhost:3001/pokemons/images', { prompt });
         return response.data;
     } catch (error) {
+        return 'error'
         console.error(error);
     }
 };

@@ -15,7 +15,8 @@
 
 .form {
   --input-text-color: #fff;
-  --input-bg-color: #283542;
+  --input-bg-color: #474c56;
+  --input-bg-color: #363c47;
   --focus-input-bg-color: transparent;
   --text-color: #949faa;
   --active-color: #1b9bee;
@@ -150,7 +151,7 @@ select {
   margin-inline: 2em 0em;
   border: none;
   background: #283542;
-  background: #283542;
+  background: #2c313a;
   margin-left: 0px;
   margin-bottom: 2em;
 }
@@ -163,8 +164,7 @@ select {
 
 select:hover {
   border-color: #1b9bee; /* Cambia el color del borde al verde cuando el usuario pasa el mouse */
-  background: none;
-  background: rgba(11, 149, 203, 0.242);
+  background: #2c313a;
   outline: 1px solid #1b9bee;
   
 }
@@ -172,13 +172,12 @@ select:hover {
 
 select:focus {
   border-color: #1b9bee; /* Cambia el color del borde al verde cuando el usuario pasa el mouse */
-  background: none;
-  background: rgba(11, 149, 203, 0.242);
+  background: #2c313a;
   outline: 1px solid #1b9bee;
 }
 
 option{
-  background-color: #1c2431;
+  background: #2c313a;
   padding:0 30px 0 10px;
   border-top:white solid 1px;
   font-size: 1.1rem;
@@ -221,8 +220,7 @@ select::-webkit-scrollbar-thumb {
 
 
 .container-filters{
-  border-right: 1px solid #5c5d60;
-  background: #1c2431;
+  background: #21252b;
   display: inline-block;
   position: fixed;
   top: 1px;
@@ -230,6 +228,8 @@ select::-webkit-scrollbar-thumb {
   min-width: 17vw;
   height: 100%;
   padding: 7em .7em 0 .7em;
+  border-right: 1px solid #181a1f;
+  box-shadow: #181a1f 4px 0px 6px;
 }
 
 .home-card-container{
@@ -243,7 +243,7 @@ select::-webkit-scrollbar-thumb {
 }
 
 .home-btn-filters{
-  background-color:#1b9bee;
+  background-color:#007acc;
   border-radius: 7px;
   border:none;
   padding: .4em .8em;
@@ -253,10 +253,12 @@ select::-webkit-scrollbar-thumb {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  color:#ffffff  ;
+  letter-spacing: 0.5px;
 }
 
 .home-btn-filters:hover{
-  background-color:#51a9e4;
+ background: linear-gradient(100deg, #007acc, #46a3e1); 
 }
 
 .home-container-sin-resultados{
@@ -276,17 +278,17 @@ select::-webkit-scrollbar-thumb {
   margin-top: -25px;
 }
 
-
+/*       PAGINADO        */
 .home-btn-paginado{
   text-align: center;
   margin: 3em 0 3em 20%;
 }
 
 .home-btn-paginado button{
-  background: #1c2431;
+    background-color: transparent;
     border: none;
     color: inherit;
-    outline: 2px solid white;
+    outline: 2px solid #abb2bf;
     width: 35px;
     height:35px;
     border-radius:100%;
@@ -297,7 +299,9 @@ select::-webkit-scrollbar-thumb {
 }
 
 .home-btn-paginado button:disabled {
-  background-color: gray;
+  background-color: rgb(82, 82, 82);
+  opacity: .4;
+  cursor: default;
 }
 
 
@@ -313,5 +317,16 @@ select::-webkit-scrollbar-thumb {
 }
 
 .current-page{
-  background-color: rgba(64, 135, 216, 0.685)!important;
+  background-color: #4d78cc!important;
+  
+}
+
+
+.loading-home{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100vw;
+ height: 100vh;
 }

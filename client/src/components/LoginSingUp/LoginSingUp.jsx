@@ -11,9 +11,9 @@ const LoginSingUp = () => {
     return(
         <div>
             <NavBar/>
-            <div>
-            <h2>Inicia sesión o registrate para crear tus pokemons!</h2>
-            <button onClick={() => loginWithRedirect()}>Iniciar sesión</button>
+            <div className="no-logueado-container">
+            <h2>Inicia sesión o registrate para crear tus pokémons!</h2>
+            <button className="no-logueado-btn" onClick={() => loginWithRedirect()}>Iniciar sesión</button>
             </div>
         </div>
     )

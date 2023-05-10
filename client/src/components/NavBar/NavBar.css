@@ -50,10 +50,12 @@ ul{
   top: 0px;
   z-index: 20;
   width: 100%;
-  background: #1c2431;
-  border-bottom: 1px solid #5c5d60;
+   background-color: #1d1f23;
+   border-bottom: 1px solid #181a1f;
+   box-shadow: #181a1f 0px 4px 6px;
  
   padding: 1em 1em .5em 1em;
+  font-family: 'Bruno Ace SC', cursive !important;
 }
 
 .nav-content{

@@ -107,11 +107,15 @@ router.post("/create", validatePokemonData, async (req, res, next) => {
       const resultado = await imgsPokemonsConIa(pokemonPrompt);
       res.send(resultado);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send({ message: 'Error al generar las imágenes' });
+      console.log(error)
     }
   });
 
 
+  
+
 
 
 module.exports = router;
+

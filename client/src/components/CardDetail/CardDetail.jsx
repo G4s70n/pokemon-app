@@ -57,10 +57,10 @@ const CardDetail = (props) => {
           <NavBar />
         </div>
         <img className="card-d-img-not-found"
-          src="\src\assets\PokemonDetail\not-found.png"
+          src="\src\assets\PokemonDetail\not-found.webp"
           alt="imagen pikachu"
         />
-        <h2>Oops! Pokemon no encontrado...</h2>
+        <h2>Oops! Pokémon no encontrado...</h2>
         <Link to="/home">
           <button class="card-d-button-regresar" type="button">
             ⟵ Regresar
@@ -73,14 +73,19 @@ const CardDetail = (props) => {
   return (
     <div className="card-detail-container">
       <div><NavBar /></div>
+
       <div className="card-detail">
+      <div className="background-a"></div>
         {Object.keys(pokemonDetail).length > 0 &&
         evolutionsDetail.length > 0 &&
-        newsPokemons.length > 0 ? (
+        newsPokemons.length > 1 ? (
           <>
             <div className="card-d-container-pokemon">
+
             <div class="background" style={{ backgroundImage: `url(${pokemonDetail.image})`}}></div>
+             
               <img className={`card-d-img-principal card-d-img-prinp-${params.id > idNews ? 'new' :''}`} src={pokemonDetail.image} alt="imagen pokemon" />
+              
            
 
             <div className="card-d-name-id">
@@ -101,20 +106,19 @@ const CardDetail = (props) => {
             {lado === "A" ? (
               <div className="lado-A">
                 <div className="card-d-info-A">
-                  <div className="background-a"></div>
                   <div>
                     <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Color</span>
-                    <span>{pokemonDetail.color ? pokemonDetail.color :'____'}</span>
+                    <span className="card-d-info-data">{pokemonDetail.color ? pokemonDetail.color :'____'}</span>
                   </div>
 
                   <div>
                     <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Altura</span>
-                    <span>{(pokemonDetail.height / 10).toFixed(1).toString() + " m"}</span>
+                    <span className="card-d-info-data">{(pokemonDetail.height / 10).toFixed(1).toString() + " m"}</span>
                   </div>
                   
                   <div className="card-d-div-info-3">
                     <span className={`card-d-color-info card-d-color-info-${pokemonDetail.types[0]}`}>Peso</span>
-                    <span>{(pokemonDetail.weight / 10).toFixed(1).toString() + " kg"}</span>
+                    <span className="card-d-info-data">{(pokemonDetail.weight / 10).toFixed(1).toString() + " kg"}</span>
                   </div>
 
                 </div>
@@ -161,7 +165,6 @@ const CardDetail = (props) => {
               </div>
             ) : (
               <div className="lado-B">
-                <div className="background-b"></div>
                 <span className="card-d-caracteristicas">Caracteristicas</span>
                
                   <div class="single-chart">
@@ -305,17 +308,17 @@ const CardDetail = (props) => {
               </div>
             )}
 
-            <div className="card-d-buttons">
-              <button onClick={handleLadoAoB} value="A" type="button">
+            <div className="card-d-buttons" >
+            <button className={`button-info-card-d ${lado === "A" ? `buttons-card-${pokemonDetail.types[0]}` : ""}`} onClick={handleLadoAoB} value="A" type="button">
                 Info
               </button>
-              <button onClick={handleLadoAoB} value="B" type="button">
+              <button className={`button-caract-card-d ${lado === "B" ? `buttons-card-${pokemonDetail.types[0]}` : ""}`} onClick={handleLadoAoB} value="B" type="button">
                 Estadísticas
               </button>
             </div>
           </>
         ) : (
-          <div>
+          <div className="card-d-loading">
             <img src="../../public/loading.gif" alt="gif loading" />
             <h2>Loading...</h2>
           </div>

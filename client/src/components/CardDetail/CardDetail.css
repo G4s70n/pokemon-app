@@ -1,589 +1,677 @@
    /* PAGE NOT FOUND */
-   .card-detail-not-found{
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   .card-detail-not-found {
+     max-height: 100vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
    }
 
 
    .card-d-button-regresar {
-    height: 2.2em;
-    width: auto;
-    border-radius: 3px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border: none;
-    background: #fff;
-    margin: 0;
-   }
-   
-   .card-d-button-regresar:hover {
-    background-color: rgb(15, 112, 209);
-    color: white;
+     height: 2.2em;
+     width: auto;
+     border-radius: 3px;
+     letter-spacing: 1px;
+     cursor: pointer;
+     border: none;
+     background: #fff;
+     margin: 0;
    }
 
-   .card-d-img-not-found{
-    width: 30%;
+
+   .card-d-img-not-found {
+     width: 23%;
+     margin-top: 2em;
    }
 
 
 
    /* CARD DETAIL */
-   .card-detail-container{
-    position: relative;
-    min-height: 100vh;
-    margin-bottom: -100px;
-  }
-  
-  .card-detail{
-   
-    width: 70%;
-    margin-left: auto;
-    margin-right:auto ;
-    border-radius: 10px;
-    margin-top: 5em;
-    position: relative;
-    min-height: 50vh;
-    margin-bottom: 8em;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    border: 2px solid rgba(0, 0, 0, 0.333);
-  
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(0, 0, 0, 0.274) 100%);
+   .card-detail-container {
+     position: relative;
+     min-height: 100vh;
+     margin-bottom: -100px;
+     border: 0.1px solid rgba(245, 222, 179, 0);
    }
 
-   .card-d-container-pokemon{
- /*    border: 4px solid orange; */
-    display: inline-block;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    /* border-right: 1px solid rgba(0, 0, 0, 0.333); */
+   .card-detail {
+
+     width: 60%;
+     margin-left: auto;
+     margin-right: auto;
+     border-radius: 10px;
+     margin-top: 5em;
+     position: relative;
+     min-height: 50vh;
+     margin-bottom: 8em;
+     display: flex;
+     justify-content: center;
+     overflow: hidden;
+     background: rgb(255, 255, 255);
+     background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.274) 100%);
+     box-shadow: #181a1f 4px 4px 10px;
+   }
+
+   .card-d-container-pokemon {
+     /*    border: 4px solid orange; */
+     display: inline-block;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     position: relative;
+     /* border-right: 1px solid rgba(0, 0, 0, 0.333); */
    }
 
 
    .background {
-    position: absolute;
-    top: -90%;
-    left: 0%;
-    width:200%;
-    height: 100vh;
-    background-size: cover;
-    filter: blur(30px) grayscale(.3) brightness(75%);
-    z-index: -1;
-  }
-  
-  .content {
-    position: relative;
-    z-index: 1;
-  }
-   
+     position: absolute;
+     width: 200%;
+     height: 100vh;
+     background-size: cover;
+     filter: blur(30px) grayscale(.3) brightness(75%);
+     z-index: -2;
+     top: -40%;
+     left: 50%;
+   }
+
+   .content {
+     position: relative;
+     z-index: 1;
+   }
 
 
-   .card-d-img-principal{
-    display: inline;
-    width: 85%;
-    padding: 1em 1em 0em 1em;
-    
-  }
-  
-  .card-d-name-id{
+   /* IMAGEN PRINCIPAL */
+   .card-d-img-principal {
+     display: inline;
+     width: 85%;
+     padding: 1em 1em 0em 1em;
+
+   }
+
+   .img-main-container-card-d {
+     border: 3px solid red;
+
+     z-index: -1;
+   }
+
+   .card-d-img-prinp-new {
+     border-radius: 30px;
+     width: 75%;
+     margin: 1em 0em;
+   }
+
+
+
+   .card-d-name-id {
      width: 100%;
      text-align: center;
      padding: 0em 0em 2em 0em;
    }
 
-   .card-d-name{
-    display: inline;
+   .card-d-name {
+     display: inline;
    }
 
-   .card-d-id{
-    display: inline;
-    margin-right: .3em;
-    font-size: 1.7rem;
-    font-weight: 600;
+   .card-d-id {
+     display: inline;
+     margin-right: .3em;
+     font-size: 1.7rem;
+     font-weight: 600;
    }
 
    .card-d-type-0,
-   .card-d-type-1{
-    margin: 0em .4em ;
-    display: inline-block;
-    padding: .1em .8em;
-    border-radius:4px;
-    margin-top: .6em;
-    font-size: .9rem;
+   .card-d-type-1 {
+     margin: 0em .4em;
+     display: inline-block;
+     padding: .1em .8em;
+     border-radius: 4px;
+     margin-top: .6em;
+     font-size: .9rem;
    }
-
-
-
 
 
 
    /* LADO DERECHO CARD */
 
    .lado-A,
-   .lado-B{
-    display:inline-block;
-    width: 100%;
-  /*   background-color: #19191983; */
-    padding: 0em .5em;
+   .lado-B {
+     display: inline-block;
+     width: 100%;
+     /*   background-color: #19191983; */
+     padding: 0em .5em;
    }
 
-   .lado-B{
-    display: flex;
-    align-items: center;
+   .lado-B {
+     display: flex;
+     align-items: center;
    }
 
-   .lado-A{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+   .lado-A {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     margin-top: -30px;
    }
 
-   .card-d-info-A{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 1.8em;
-    margin-bottom: 3em;
+   .card-d-info-A {
+     display: flex;
+     justify-content: space-evenly;
+     margin-top: 1.8em;
+     margin-bottom: 3em;
    }
 
-   .card-d-info-A div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    border-right: 1px solid white;
+   .card-d-info-A div {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     border-right: 1px solid white;
+     z-index: 5;
    }
 
-   .card-d-div-info-3{
-    border: initial!important;
+   .card-d-div-info-3 {
+     border: initial !important;
    }
 
-   .card-d-color-info{
-    font-weight: 800;
+   .card-d-color-info {
+     font-weight: 800;
+     font-size: 1.2rem;
    }
 
-
-
-   
-   .card-d-evolutions-container{
-    display: flex;
-    justify-content: space-evenly;
-    position: relative;
-    padding: 2em 0em 0em 0em;
-   }
-
-
-   .card-d-evolutions{
-    position: absolute;
-    top: -7%;
-    width: 98%;
-    border-bottom: 1px solid white;
-    font-size: 1.4rem;
-    padding-bottom: .1em;
-   }
-
-   .lado-A img{
-    width: 90px;
-   }
-   .card-d-div-img-evolution{
-    position: relative;
+   .card-d-info-data {
+     font-size: 1.1rem;
    }
 
 
 
-   .card-d-flecha-null{
-    display: none;
-  }
+   .card-d-evolutions-container {
+     display: flex;
+     justify-content: space-evenly;
+     position: relative;
+     padding: 2em 0em 0em 0em;
+   }
+
+   .imagenes-evolucion {
+     filter: saturate(1.5);
+   }
+
+   .card-d-evolutions {
+     position: absolute;
+     top: -7%;
+     width: 92%;
+     border-bottom: 1px solid white;
+     font-size: 1.4rem;
+     padding-bottom: .1em;
+   }
+
+   .lado-A img {
+     width: 90px;
+   }
+
+   .card-d-div-img-evolution {
+     position: relative;
+   }
+
+
+   .card-d-flecha-null {
+     display: none;
+   }
 
    .card-d-flecha-0,
-   .card-d-flecha-1{
-    position:absolute;
-    top: 37%;
-    right: -37%;
-    display: initial;
+   .card-d-flecha-1 {
+     position: absolute;
+     top: 30%;
+     right: -25%;
+     display: initial;
    }
 
 
    .card-d-name-evolution,
-   .card-d-id-evolution{
-    display: flex;
-    justify-content: center;
-    font-size: 1.2rem;
+   .card-d-id-evolution {
+     display: flex;
+     justify-content: center;
+     font-size: 1.2rem;
    }
 
-   .card-d-id-evolution{
-    color: rgb(117, 117, 117);
-    font-size: .9rem;
-
+   .card-d-id-evolution {
+     color: white;
+     font-size: .9rem;
+     background-color: #81818176;
+     border-radius: 6px;
    }
 
 
-   .card-d-img-prinp-new{
-    width:107%;
-    position: absolute;
-    z-index: -1;
-   }
 
 
    /* CÍRCULOS DE CARGA */
-   
-.card-d-caracteristicas{
-  position: absolute;
-  top: 7%;
-  width: 48%;
-  border-bottom: 1px solid white;
-  font-size: 1.4rem;
-  padding-bottom: .1em;
-}
 
-  .flex-wrapper {
-    width: 100%;
-  }
-  
-  .single-chart {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-top: 1em;
+   .card-d-caracteristicas {
+     position: absolute;
+     left: 55%;
+     top: 7%;
+     width: 41%;
+     border-bottom: 1px solid white;
+     font-size: 1.4rem;
+     padding-bottom: .1em;
+   }
 
-  }
+   .flex-wrapper {
+     width: 100%;
+   }
 
-  .card-d-circles{
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2em;
-  }
-  
-  .circular-chart {
-    display: inline;
-    margin: 10px auto;
-    max-width: 100%;
-    max-height: 90px;
-    width: 100px;
-    overflow: visible;
-    position: relative;
-  }
+   .single-chart {
+     width: 90%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     padding-top: 1em;
+   }
 
+   .card-d-circles {
+     display: flex;
+     justify-content: space-evenly;
+     margin-bottom: 2em;
+   }
 
-  .circle-bg {
-    fill: none;
-    stroke: #b3b3b32c;
-    stroke-width: 3.8;
-  }
-
-.circle {
-fill: none;
-stroke-width: 2.4;
-stroke-linecap: square; 
-animation: progress 1.5s ease-out forwards;
-}
+   .circular-chart {
+     display: inline;
+     margin: 10px auto;
+     max-width: 100%;
+     max-height: 90px;
+     width: 100px;
+     overflow: visible;
+     position: relative;
+   }
 
 
-  @keyframes progress {
-    0% {
-      stroke-dasharray: 0 100;
-    }
-  }
-  
+   .circle-bg {
+     fill: none;
+     stroke: #b3b3b32c;
+     stroke-width: 3.8;
+   }
+
+   .circle {
+     fill: none;
+     stroke-width: 2.4;
+     stroke-linecap: square;
+     animation: progress 1.5s ease-out forwards;
+   }
 
 
-  .percentage {
-    font-family: sans-serif;
-    font-size: 0.5em;
-    text-anchor: middle;
-    fill: white;
-  }
-  
-  .label {
-    font-size: .5rem;
-    text-anchor: middle;
-    dominant-baseline: central;
-    transform: translate(0, 25px);
-    fill: white;
-  }
+   @keyframes progress {
+     0% {
+       stroke-dasharray: 0 100;
+     }
+   }
 
 
-   
 
-  /* EVOLUTIONS NEWS */
+   .percentage {
+     font-family: sans-serif;
+     font-size: 0.5em;
+     text-anchor: middle;
+     fill: white;
+   }
 
-  .card-d-img-evolution-new img{
-    width: 80px;
-  }
-  
-  
-  .card-d-img-evolution-new img{
-    border-radius: 100%;
-    width: 80px;
-    height: 80px;
-  }
-  
+   .label {
+     font-size: .5rem;
+     text-anchor: middle;
+     dominant-baseline: central;
+     transform: translate(0, 25px);
+     fill: white;
+   }
+
+
+
+
+   /* EVOLUTIONS NEWS */
+
+   .card-d-img-evolution-new img {
+     width: 80px;
+   }
+
+
+   .card-d-img-evolution-new img {
+     border-radius: 100%;
+     width: 80px;
+     height: 80px;
+   }
+
 
 
 
    /* BOTONES INFO */
-   .card-d-buttons{
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+   .card-d-buttons {
+     position: absolute;
+     right: 0%;
+     bottom: 0px;
+     text-align: center;
+   }
+
+   .card-d-buttons:hover {
+     cursor: pointer;
+   }
+
+   .button-caract-card-d,
+   .button-info-card-d {
+     all: unset;
+     color: rgb(65, 65, 65);
+     font-weight: 600;
+     padding: .3em 1em;
+     background-color: white;
+     font-size: .9rem;
+     width: 90px;
+   }
+
+   .button-info-card-d {
+     border-top-left-radius: 13px;
+   }
+
+
+   /* COLORES PARA LAS SPAN DE LOS TYPES Y LOS CIRCLES*/
+   .card-type-normal,
+   .circle-normal,
+   .buttons-card-normal {
+     background-color: #A8A878;
+     stroke: #A8A878;
+   }
+
+   .card-type-fire,
+   .circle-fire,
+   .buttons-card-fire {
+     background-color: #F08030;
+     stroke: #F08030;
+     color: white;
+   }
+
+   .card-type-water,
+   .circle-water,
+   .buttons-card-water {
+     background-color: #6890F0;
+     stroke: #6890F0;
+     color: white;
+   }
+
+   .card-type-grass,
+   .circle-grass,
+   .buttons-card-grass {
+     background-color: #78C850;
+     stroke: #78C850;
+     color: white;
+   }
+
+   .card-type-electric,
+   .circle-electric,
+   .buttons-card-electric {
+     background-color: #F8D030;
+     stroke: #F8D030;
+     color: white;
+   }
+
+   .card-type-ice,
+   .circle-ice,
+   .buttons-card-ice {
+     background-color: #98D8D8;
+     stroke: #98D8D8;
+     color: white;
+   }
+
+   .card-type-fighting,
+   .circle-fighting,
+   .buttons-card-fighting {
+     background-color: #C03028;
+     stroke: #C03028;
+     color: white;
+   }
+
+   .card-type-poison,
+   .circle-poison,
+   .buttons-card-poison {
+     background-color: #A040A0;
+     stroke: #A040A0;
+     color: white;
+   }
+
+   .card-type-ground,
+   .circle-ground,
+   .buttons-card-ground {
+     background-color: #E0C068;
+     stroke: #E0C068;
+     color: white;
+   }
+
+   .card-type-flying,
+   .circle-flying,
+   .buttons-card-flying {
+     background-color: #A890F0;
+     stroke: #A890F0;
+     color: white;
+   }
+
+   .card-type-psychic,
+   .circle-psychic,
+   .buttons-card-psychic {
+     background-color: #F85888;
+     stroke: #F85888;
+     color: white;
+   }
+
+   .card-type-bug,
+   .circle-bug,
+   .buttons-card-bug {
+     background-color: #A8B820;
+     stroke: #A8B820;
+     color: white;
+   }
+
+   .card-type-rock,
+   .circle-rock,
+   .buttons-card-rock {
+     background-color: #B8A038;
+     stroke: #B8A038;
+     color: white;
+   }
+
+   .card-type-ghost,
+   .circle-ghost,
+   .buttons-card-ghost {
+     background-color: #705898;
+     stroke: #705898;
+     color: white;
+   }
+
+   .card-type-dragon,
+   .circle-dragon,
+   .buttons-card-dragon {
+     background-color: #7038F8;
+     stroke: #7038F8;
+     color: white;
+   }
+
+   .card-type-dark,
+   .circle-dark,
+   .buttons-card-dark {
+     background-color: #705848;
+     stroke: #705848;
+     color: white;
+   }
+
+   .card-type-steel,
+   .circle-steel,
+   .buttons-card-steel {
+     background-color: #B8B8D0;
+     stroke: #B8B8D0;
+     color: white;
+   }
+
+   .card-type-fairy,
+   .circle-fairy,
+   .buttons-card-fairy {
+     background-color: #EE99AC;
+     stroke: #EE99AC;
+     color: white;
+   }
+
+   .card-type-shadow,
+   .circle-shadow,
+   .buttons-card-shadow {
+     background-color: #3f3f3f;
+     color: white;
+   }
+
+   .card-type-unknown,
+   .circle-unknown,
+   .buttons-card-unknown {
+    background-color: #2c3e50;
+   stroke: #2c3e50;
+   color: white;
    }
 
 
 
 
-/* COLORES PARA LAS SPAN DE LOS TYPES Y LOS CIRCLES*/
-.card-type-normal,
-.circle-normal {
-  background-color: #A8A878;
-  stroke: #A8A878;
-}
-
-.card-type-fire,
-.circle-fire{
-  background-color: #F08030;
-  stroke: #F08030;
-}
-
-.card-type-water,
-.circle-water {
-  background-color: #6890F0;
-  stroke: #6890F0;
-}
-
-.card-type-grass,
-.circle-grass {
-  background-color: #78C850;
-  stroke:#78C850;
-}
-
-.card-type-electric,
-.circle-electric {
-  background-color: #F8D030;
-   stroke:#F8D030;
-}
-
-.card-type-ice,
-.circle-ice {
-  background-color: #98D8D8;
-  stroke: #98D8D8;
-}
-
-.card-type-fighting,
-.circle-fighting {
-  background-color: #C03028;
-  stroke:#C03028;
-}
-
-.card-type-poison,
-.circle-poison {
-  background-color: #A040A0;
-  stroke:#A040A0;
-}
-
-.card-type-ground,
-.circle-ground {
-  background-color: #E0C068;
-  stroke:#E0C068;
-}
-
-.card-type-flying,
-.circle-flying {
-  background-color: #A890F0;
-  stroke:#A890F0;
-}
-
-.card-type-psychic,
-.circle-psychic {
-  background-color: #F85888;
-  stroke:#F85888;
-}
-
-.card-type-bug,
-.circle-bug {
-  background-color: #A8B820;
-  stroke:#A8B820;
-}
-
-.card-type-rock,
-.circle-rock {
-  background-color: #B8A038;
-  stroke: #B8A038;
-}
-
-.card-type-ghost,
-.circle-ghost {
-  background-color: #705898;
-  stroke:#705898;
-}
-
-.card-type-dragon,
-.circle-dragon {
-  background-color: #7038F8;
-  stroke:#7038F8;
-}
-
-.card-type-dark,
-.circle-dark {
-  background-color: #705848;
-  stroke:#705848;
-}
-
-.card-type-steel,
-.circle-steel {
-  background-color: #B8B8D0;
-  stroke: #B8B8D0;
-}
-
-.card-type-fairy,
-.circle-fairy {
-  background-color: #EE99AC;
-  stroke:#EE99AC;
-}
-
-.card-type-shadow,
-.circle-shadow {
-  background-color: #3f3f3f; 
-}
-
-
-
-
-
-/* COLOR IDs */
-.card-d-id-color-fire,
-.card-d-color-info-fire{
-color: #F08030;
-}
-
-.card-d-id-color-normal,
-.card-d-color-info-normal {
-color: #A8A878;
-}
-
-.card-d-id-color-water,
-.card-d-color-info-water {
-color: #6890F0;
-}
-
-.card-d-id-color-grass,
-.card-d-color-info-grass {
-color: #78C850;
-}
-
-.card-d-id-color-electric,
-.card-d-color-info-electric {
-color: #F8D030;
-}
-
-.card-d-id-color-ice,
-.card-d-color-info-ice {
-color: #98D8D8;
-}
-
-.card-d-id-color-fighting,
-.card-d-color-info-fighting {
-color: #C03028;
-}
-
-.card-d-id-color-poison,
-.card-d-color-info-poison {
-color: #A040A0;
-}
-
-.card-d-id-color-ground,
-.card-d-color-info-ground {
-color: #E0C068;
-}
-
-.card-d-id-color-flying,
-.card-d-color-info-flying {
-color: #A890F0;
-}
-
-.card-d-id-color-psychic,
-.card-d-color-info-psychic {
-color: #F85888;
-}
-
-.card-d-id-color-bug,
-.card-d-color-info-bug {
-color: #A8B820;
-}
-
-.card-d-id-color-rock,
-.card-d-color-info-rock {
-color: #B8A038;
-}
-
-.card-d-id-color-ghost,
-.card-d-color-info-ghost {
-color: #705898;
-}
-
-.card-d-id-color-dragon,
-.card-d-color-info-dragon {
-color: #7038F8;
-}
-
-.card-d-id-color-dark,
-.card-d-color-info-dark {
-color: #705848;
-}
-
-.card-d-id-color-steel,
-.card-d-color-info-steel {
-color: #B8B8D0;
-}
-
-.card-d-id-color-fairy,
-.card-d-color-info-fairy {
-color: #EE99AC;
-}
-
-
-   .card-d-footer{
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
+   /* COLOR IDs */
+   .card-d-id-color-fire,
+   .card-d-color-info-fire {
+     color: #F08030;
    }
+
+   .card-d-id-color-normal,
+   .card-d-color-info-normal {
+     color: #A8A878;
+   }
+
+   .card-d-id-color-water,
+   .card-d-color-info-water {
+     color: #6890F0;
+   }
+
+   .card-d-id-color-grass,
+   .card-d-color-info-grass {
+     color: #78C850;
+   }
+
+   .card-d-id-color-electric,
+   .card-d-color-info-electric {
+     color: #F8D030;
+   }
+
+   .card-d-id-color-ice,
+   .card-d-color-info-ice {
+     color: #98D8D8;
+   }
+
+   .card-d-id-color-fighting,
+   .card-d-color-info-fighting {
+     color: #C03028;
+   }
+
+   .card-d-id-color-poison,
+   .card-d-color-info-poison {
+     color: #A040A0;
+   }
+
+   .card-d-id-color-ground,
+   .card-d-color-info-ground {
+     color: #E0C068;
+   }
+
+   .card-d-id-color-flying,
+   .card-d-color-info-flying {
+     color: #A890F0;
+   }
+
+   .card-d-id-color-psychic,
+   .card-d-color-info-psychic {
+     color: #F85888;
+   }
+
+   .card-d-id-color-bug,
+   .card-d-color-info-bug {
+     color: #A8B820;
+   }
+
+   .card-d-id-color-rock,
+   .card-d-color-info-rock {
+     color: #B8A038;
+   }
+
+   .card-d-id-color-ghost,
+   .card-d-color-info-ghost {
+     color: #705898;
+   }
+
+   .card-d-id-color-dragon,
+   .card-d-color-info-dragon {
+     color: #7038F8;
+   }
+
+   .card-d-id-color-dark,
+   .card-d-color-info-dark {
+     color: #705848;
+   }
+
+   .card-d-id-color-steel,
+   .card-d-color-info-steel {
+     color: #B8B8D0;
+   }
+
+   .card-d-id-color-fairy,
+   .card-d-color-info-fairy {
+     color: #EE99AC;
+   }
+   .card-d-id-color-unknown,
+   .card-d-color-info-unknown {
+     color: #2c3e50;
+   }
+
 
 
 
 
    .card-detail {
-    position: relative;
+     position: relative;
 
-  }
-  
-  .background-a{
-    position: absolute;
-    top: 50%;
-    left: 95%;
-    transform: translate(-50%, -50%) rotate(10deg);
-    width: 400px;
-    height: 800px;
-    z-index: -1;
-    background: rgb(25,74,131);
-    background: linear-gradient(94deg, rgba(25,74,131,0) 0%, rgba(25,74,131,1) 83%);
-    border-left: 1px solid rgb(0, 0, 0);
-  }
-  
-  .background-b{
-    position: absolute;
-    top: 50%;
-    left: 90.4%;
-    transform: translate(-50%, -50%) rotate(10deg);
-    width: 800px;
-    height: 800px;
-    z-index: -1;
-    background: rgb(25,74,131);
-    background: linear-gradient(94deg, rgba(25,74,131,0) 0%, rgba(25,74,131,1) 83%);
-    border-left: 1px solid rgb(0, 0, 0);
-  }
+   }
+
+   .background-a {
+     position: absolute;
+     top: 50%;
+     left: 99%;
+     transform: translate(-50%, -50%) rotate(10deg);
+     width: 800px;
+     height: 800px;
+     z-index: 0;
+     background: rgb(25, 75, 133);
+     background: linear-gradient(94deg, rgba(25, 75, 133, 0) 0%, rgba(25, 74, 131, 0.9137780112044818) 49%);
+     border-left: 1px solid rgb(30, 30, 30);
+   }
+
+
+
+   .card-d-loading {
+     z-index: 20;
+     position: absolute;
+     min-width: 100%;
+     min-height: 100%;
+     text-align: center;
+
+   }
+
+   .card-d-footer {
+     width: 100%;
+     position: absolute;
+     bottom: 0px;
+   }
+
+   .card-d-button-regresar{
+    background: none;
+    border: none;
+    padding: .4em 1.2em;
+    border-radius: 20px;
+    background-color: rgb(211, 13, 13);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+   }

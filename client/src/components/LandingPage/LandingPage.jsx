@@ -21,7 +21,7 @@ const LandingPage = () => {
             </button>
             </Link>
           </div>
-          <img className="landing-img-pikachu" src="./src/assets/LandingPage/pikachu.png" alt="pikachu" />
+          <img className="landing-img-pikachu" src="./src/assets/LandingPage/pikachu.webp" alt="pikachu" />
         <div>
         </div>
       </div>

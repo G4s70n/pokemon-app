@@ -54,12 +54,21 @@ const FormPokemon = () => {
 
 
   let links = [];
+
   const getPokemonsImages = async (description) => {
-        links = await getImages({ prompt: description});
-        links = links.filter(url => !url.endsWith('.gif') && url.endsWith('.webp'));
-        setImgs(links)
-        return links;
+    try {
+      links = await getImages({ prompt: description });
+      const linksImgs = links.filter((url) => url.endsWith('.webp'));
+      setImgs(linksImgs);
+      return linksImgs;
+    } catch (error) {
+      setImgs('error');
+      console.log(error);
+      return 'error';
+    }
   };
+  
+  console.log(imgs.length, imgs)
 
     
   const handleTextarea = (event) => {
@@ -68,10 +77,11 @@ const FormPokemon = () => {
   }
   
   const handleTextareaButton = (event) => {
-      setImgs([])
+      setImgs(['cargando'])
       getPokemonsImages(description)
       setDescription('')
-  };
+    };
+  
       
 
   const handleSeccion = (event) => {
@@ -122,232 +132,310 @@ const FormPokemon = () => {
 
   if(isAuthenticated === false)return(<LoginSingUp/>)
 
- const borrar = ()=>{
-  setNewPokemon(true)
- }
+
 
   return (
-    <div>
-          <div><NavBar/></div>
-    <div class="form">
-
-<form>
-
-  {/*  //----------- SECCIÓN A ----------- */}
-  {seccion === 1 && (
-    <div class="seccion">
-      <label htmlFor="name">Nombre:</label>
-      <input
-        onChange={handlerFormValues}
-        onFocus={() => setFocused({...focused, inputName: true})} 
-        onBlur={() => setFocused({...focused, inputName: false})}
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Ingresa un name"
-        value={form.name}
-      />
-      <button onClick={handleNameGenerator}>Generador nombres</button>
-      {focused.inputName && errors.inputName && <span>{errors.inputName}</span>}
-      <br />
-      <br />
-
-      <label htmlFor="hp">HP:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="hp"
-        name="hp"
-        min="0"
-        max="255"
-        value={form.hp}
-      />
-      <output htmlFor="hp">{form.hp}</output>
-      <br />
-      <br />
-
-      <label htmlFor="attack">Ataque:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="attack"
-        name="attack"
-        min="0"
-        max="190"
-        value={form.attack}
-      />
-      <output htmlFor="attack">{form.attack}</output>
-      <br />
-      <br />
-
-      <label htmlFor="defense">Defensa:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="defense"
-        name="defense"
-        min="0"
-        max="230"
-        value={form.defense}
-      />
-      <output htmlFor="defense">{form.defense}</output>
-      <br />
-      <br />
-
-      <label htmlFor="speed">Velocidad:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="speed"
-        name="speed"
-        min="0"
-        max="180"
-        value={form.speed}
-      />
-      <output htmlFor="speed">{form.speed}</output>
-      <br />
-      <br />
-
-      <label htmlFor="specialAttack">Ataque Especial:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="specialAttack"
-        name="specialAttack"
-        min="0"
-        max="194"
-        value={form.specialAttack}
-      />
-      <output htmlFor="specialAttack">{form.specialAttack}</output>
-      <br />
-      <br />
-
-      <label htmlFor="specialDefense">Defensa Especial:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="specialDefense"
-        name="specialDefense"
-        min="0"
-        max="230"
-        value={form.specialDefense}
-      />
-      <output htmlFor="specialDefense">{form.specialDefense}</output>
-      <br />
-      <br />
-
-      <label htmlFor="weight">Peso:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="weight"
-        name="weight"
-        min="0"
-        max="999.9"
-        value={form.weight}
-      />
-      <output htmlFor="weight">{form.weight}</output>
-      <br />
-      <br />
-
-      <label htmlFor="height">Altura:</label>
-      <input
-        onChange={handlerFormValues}
-        type="range"
-        id="height"
-        name="height"
-        min="0"
-        max="14.5"
-        value={form.height}
-      />
-      <output htmlFor="height">{form.height}</output>
-      <br />
-      <br />
-      <button onClick={handleSeccion}  disabled={errors.inputName} name="siguiente">
-        Siguiente
-      </button>
-    </div>
-  )}
-
-
-  {/* //----------- SECCIÓN B ----------- */}
-  {seccion === 2 && (
-    <div class="seccion seccion-2">
-      <h2>Selecciona los tipos de tu pokemon</h2>
-
-      {
-         types.map(e => (
-              <div>
-               <input onClick={handlerFormValues} class="checkbox" type="checkbox" key={e.id} id={e.name} name="types" value={e.name}/>
-              <label htmlFor={e.name} id={`${e.name}-label`} >
-              <img src={`src/assets/TypesLogos/${e.name}.webp`} alt={`Logo de tipo ${e.name}`} />
-              </label>
+    <div className="form-container">
+      <div>
+        <NavBar />
+      </div>
+      <h1 className="h1-form">Crea tu pokémon!</h1>
+      <div class="formu">
+        <form>
+          {/*  //----------- SECCIÓN A ----------- */}
+          {seccion === 1 && (
+            <div class="form-seccion form-seccion-1">
+              <p className="titulo-seccion-form">
+                Elige un nombre y sus características
+              </p>
+              <div className="name-container-form">
+                <input
+                  className={`input-name-form ${
+                    focused.inputName && errors.inputName ? "error-form" : ""
+                  }`}
+                  onChange={handlerFormValues}
+                  onFocus={() => setFocused({ ...focused, inputName: true })}
+                  onBlur={() => setFocused({ ...focused, inputName: false })}
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Ingresa un nombre"
+                  value={form.name}
+                />
+                {focused.inputName && errors.inputName && (
+                  <span className="msj-error-form">{errors.inputName}</span>
+                )}
+                <button
+                  className="btn-generator-form"
+                  onClick={handleNameGenerator}
+                >
+                  Generador nombres
+                </button>
               </div>
-          ))
-      }
 
+              <div className="range-form-container">
+              <div className="range-form">
+                <label htmlFor="hp">HP:</label>
+                <input
+                  className="hp-range"
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="hp"
+                  name="hp"
+                  min="0"
+                  max="255"
+                  value={form.hp}
+                />
+                <output htmlFor="hp">{form.hp}</output>
 
-      <span>{form.types.length > 2 ? 'Solo puedes seleccionar hasta 2 tipos' :''}</span>
-      <button onClick={handleSeccion} name="atras">Atrás</button>
-      <button onClick={handleSeccion} disabled={form.types.length > 2 || form.types.length === 0} name="siguiente">Siguiente</button>
-    </div>
-  )}
+                <label htmlFor="attack">Ataque:</label>
+                <input
+                  className="attack-range"
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="attack"
+                  name="attack"
+                  min="0"
+                  max="190"
+                  value={form.attack}
+                />
+                <output htmlFor="attack">{form.attack}</output>
 
+                <label htmlFor="defense">Defensa:</label>
+                <input
+                  className="defense-range"
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="defense"
+                  name="defense"
+                  min="0"
+                  max="230"
+                  value={form.defense}
+                />
+                <output htmlFor="defense">{form.defense}</output>
 
-  {/* //----------- SECCIÓN C ----------- */}
-  {seccion === 3 && (
-      <div class="seccion">
-        
-        {newPokemon && (
-          <Modal message="Pokemon creado con éxito!" /* onClose={handleCloseModal} */ id={newPokemon.id}/>
-        )}
-        
-          {newPokemon && <Modal message="Pokemon creado con éxito!" /* onClose={handleCloseModal} */ id={newPokemon.id}/>}
-          <div>
-            <h2>Seccion C</h2>
-            <div>
-              {/* Acá poner unas imágenes con una pokebola por defecto y cuando se apriete 'generar'
-                  cambiar el estilo al div para oscurecerlo y agregar una gif pokebola loading...
-               */}
-              {imgs.length === 0 && <p>Generando...</p>}
-              <div>
-                {imgs && imgs.map((img, index) => (
-                  <div key={index}>
-                    <input type="radio" id={`img-${index}`} name="selectedImage" value={img} onChange={handleImageClick} />
-                    <label htmlFor={`img-${index}`}>
-                      <img src={img} alt="pokemon" />
+                <label htmlFor="speed">Velocidad:</label>
+                <input
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="speed"
+                  name="speed"
+                  min="0"
+                  max="180"
+                  value={form.speed}
+                />
+                <output htmlFor="speed">{form.speed}</output>
+              </div>
+
+              <div className="range-form">
+                <label htmlFor="specialAttack">Ataque Especial:</label>
+                <input
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="specialAttack"
+                  name="specialAttack"
+                  min="0"
+                  max="194"
+                  value={form.specialAttack}
+                />
+                <output htmlFor="specialAttack">{form.specialAttack}</output>
+
+                <label htmlFor="specialDefense">Defensa Especial:</label>
+                <input
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="specialDefense"
+                  name="specialDefense"
+                  min="0"
+                  max="230"
+                  value={form.specialDefense}
+                />
+                <output htmlFor="specialDefense">{form.specialDefense}</output>
+
+                <label htmlFor="weight">Peso:</label>
+                <input
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="weight"
+                  name="weight"
+                  min="0"
+                  max="999.9"
+                  value={form.weight}
+                />
+                <output htmlFor="weight">{form.weight}</output>
+
+                <label htmlFor="height">Altura:</label>
+                <input
+                  onChange={handlerFormValues}
+                  type="range"
+                  id="height"
+                  name="height"
+                  min="0"
+                  max="14.5"
+                  value={form.height}
+                />
+                <output htmlFor="height">{form.height}</output>
+              </div>
+              </div>
+
+              <button
+                className="btn-siguiente-form"
+                onClick={handleSeccion}
+                disabled={errors.inputName}
+                name="siguiente"
+              >
+                Siguiente
+              </button>
+            </div>
+          )}
+
+          {/* //----------- SECCIÓN B ----------- */}
+          {seccion === 2 && (
+            <div class="form-seccion form-seccion-2">
+              <p className="titulo-seccion-form">
+                Selecciona los tipos de tu pokémon
+              </p>
+
+              <div className="icons-types-container">
+                {types.map((e) => (
+                  <div className="icon-types-form">
+                    <input
+                      onClick={handlerFormValues}
+                      class="checkbox"
+                      type="checkbox"
+                      key={e.id}
+                      id={e.name}
+                      name="types"
+                      value={e.name}
+                    />
+                    <label htmlFor={e.name} id={`${e.name}-label`}>
+                      <img
+                        className="img-icon-types"
+                        src={`src/assets/TypesLogos/${e.name}.png`}
+                        alt={`Logo de tipo ${e.name}`}
+                      />
                     </label>
                   </div>
                 ))}
               </div>
-              {imgs.length > 0 && <span>Selecciona una imagen</span>}
-              {/* <span>{errors.image}</span> */}
+
+              <span className="msj-error-seccion-B">
+                {form.types.length > 2
+                  ? "Solo puedes seleccionar hasta 2 tipos"
+                  : ""}
+              </span>
+              <button
+                className="btn-atras-form"
+                onClick={handleSeccion}
+                name="atras"
+              >
+                Atrás
+              </button>
+              <button
+                className="btn-siguiente-form"
+                onClick={handleSeccion}
+                disabled={form.types.length > 2 || form.types.length === 0}
+                name="siguiente"
+              >
+                Siguiente
+              </button>
             </div>
+          )}
 
-            <div>
-              <form>
-                <textarea onChange={handleTextarea} onFocus={() => setFocused({...focused, inputTextarea: true})} 
-                onBlur={() => setFocused({...focused, inputTextarea: false})} name="message" value={description}
-                placeholder="Un pokemon de color negro, con forma de canguro y alas doradas..."></textarea>
-                <br/>
-                {focused.inputTextarea && errors.inputTextarea && <span>{errors.inputTextarea}</span>}
-                <input onClick={handleTextareaButton} disabled={errors.inputTextarea} type="button" value="Generar"/>
-              </form>
+          {/* //----------- SECCIÓN C ----------- */}
+          {seccion === 3 && (
+            <div class="form-seccion form-seccion-3">
+              {newPokemon && (
+                <Modal
+                  message="Pokémon creado con éxito!"
+                  /* onClose={handleCloseModal} */ id={newPokemon.id}
+                />
+              )}
+              <div>
+                <p className="titulo-seccion-form">Crea tu pokémon con IA</p>
+                <div>
+                  {imgs.length < 2  && (
+                    <div className="img-vacias-container">
+                      {Array.from({ length: 4 }).map((_, index) => (
+                    <div key={index} className={`img-vacia-form ${imgs[0] === 'cargando' ? 'img-vacia-loading' : ''}`}>
+                          <img
+                            className="logo-img-loading"
+                            src="src\assets\Create\loading-card.webp"
+                            alt="pokemon logo"
+                          />
+                          <span className="span-loading">Generando...</span>
+                        </div>
+                      ))}
+                    </div>)}
+
+
+                  <div className="imgs-generadas-container">
+                    {imgs === 'error' ?
+                      <p className="error-generar-imgs">Error al generar las imagenes, inténtalo de nuevo más tarde!</p>
+                    
+                    :imgs.length > 1 &&
+                      imgs.map((img, index) => (
+                        <div className="img-div-form" key={index}>
+                          <input
+                            className="input-checkbox"
+                            type="radio"
+                            id={`img-${index}`}
+                            name="selectedImage"
+                            value={img}
+                            onChange={handleImageClick}
+                          />
+                          <label htmlFor={`img-${index}`}>
+                            <img src={img} alt="pokemon" />
+                          </label>
+                        </div>
+                      ))
+                      }
+                  </div>
+
+
+                  {imgs.length > 1 && imgs !== 'error' && <span className="aviso-imgs-form">Selecciona una imagen</span>}
+                   <span className="errors-image">{errors.image}</span>
+                </div>
+
+                <div className="textarea-container">
+                  <form>
+                    <textarea
+                      className="textarea-form"
+                      onChange={handleTextarea}
+                      onFocus={() =>
+                        setFocused({ ...focused, inputTextarea: true })
+                      }
+                      onBlur={() =>
+                        setFocused({ ...focused, inputTextarea: false })
+                      }
+                      name="message"
+                      value={description}
+                      placeholder="Ejemplo: un pokemon con forma de mariposa, de color azul y rojo..."
+                    ></textarea>
+           
+                    {focused.inputTextarea && errors.inputTextarea && (
+                      <span className="erros-textarea">{errors.inputTextarea}</span>
+                    )}
+                    <input
+                      className="btn-generar-form"
+                      onClick={handleTextareaButton}
+                      disabled={errors.inputTextarea}
+                      type="button"
+                      value="Generar"
+                    />
+                  </form>
+                </div>
+
+                <button className="btn-atras-form" onClick={handleSeccion} name="atras">
+                  Atrás
+                </button>
+                 <input className="btn-crear-form"  onClick={handleCrearButton} disabled={imgs.length < 2 || imgs === 'error'} type="submit" value="Crear" />
+              </div>
             </div>
-
-            <button onClick={handleSeccion} name="atras">Atrás</button>
-           {/*  <input onClick={handleCrearButton} disabled={imgs.length === 0} type="submit" value="Crear" /> */}
-            <p onClick={borrar}>crear</p>{/* borrar tambien la funion 'borrar' */}
-          </div>
-
-</div>
-)}
-
-
-</form>
-
-</div>
-  <Footer />
+          )}
+        </form>
+      </div>
+      <Footer />
     </div>
   );
 };

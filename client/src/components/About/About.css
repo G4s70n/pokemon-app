@@ -2,32 +2,169 @@
 	min-height: 100vh;
 }
 
+.about-container-text {
+	border-radius:10px;
+	padding:2em 3.5em ;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:2em;
+	margin-bottom:2em;
+	border: 1px solid #007acc;
+	box-shadow: 0px 0px 40px #007acc;
+	font-size: 1.1rem !important;
+}
 
-.buttons {
-	margin-top: 160px;
+
+.lista-tech{
+	background-color: #2c313a;
+	border-radius: 20px;
+	padding: 2em 2em;
+	box-shadow: #181a1f 4px 4px 6px;
+	margin: -2em 0em 4em 0em;
+	font-weight: 600;
+
+}
+
+
+
+.tech-span {
+	width: fit-content;
+	border-radius: 10px;
+	padding: .3em .5em;
+	display: inline-block;
+	font-size: .9em;
+	font-weight: 600;
+	margin: 0px .2em;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+.lista-tech li{
+	background-color: #282c34;
+	margin: 1em 0em;
+	padding: 1em;
+	border-radius: 8px;
+	width: 600px;
+	list-style: none;
+  }
+  
+
+.lista-tech li{
+	background-color: initial;
+	margin: 0em 0em;
+	padding: .6em;
+	border-radius: 10px;
+	width: 600px;
+	list-style: none;
+}
+
+
+.lista-tech svg{
+	margin-left: .2em;
+}
+
+
+  .postgres-span {
+	color: rgb(73, 73, 255);
+	background-color: rgba(0, 0, 255, 0.123);
+  }
+  
+  .node-span {
+	color: rgb(139, 187, 85);
+	background-color: rgba(139, 187, 85, 0.123);
+  }
+  
+  .express-span {
+	color: rgb(255, 94, 97);
+	background-color: rgba(255, 94, 97, 0.123);
+  }
+  
+  .sequelize-span {
+	color: rgb(237, 184, 33);
+	background-color: rgba(237, 184, 33, 0.123);
+  }
+  
+  .javascript-span {
+	color: rgb(240, 219, 79);
+	background-color: rgba(240, 219, 79, 0.123);
+  }
+  
+  .react-span {
+	color: rgb(97, 218, 251);
+	background-color: rgba(97, 218, 251, 0.123);
+  }
+  
+  .redux-span {
+	color: rgb(118, 74, 188);
+	background-color: rgba(118, 74, 188, 0.123);
+  }
+  
+  .css-span {
+	color: rgb(22, 126, 209);
+	background-color: rgba(22, 126, 209, 0.123);
+  }
+  
+  .html-span {
+	color: rgb(247, 166, 58);
+	background-color: rgba(247, 166, 58, 0.123);
+  }
+  
+.about-container-text p{
+	margin-bottom: 2.5em;
+}
+
+.p-tech-usadas{
+	margin-bottom: 0em;
+	margin-top: 4em;
+	font-weight: 600;
+}
+
+.name-about,
+.full-stack-about,
+.api-about,
+.db-about,
+.ia-about,
+.spa-about
+{
+	display: inline;
+	font-weight: 600;
+	color: #007acc;
+}
+
+
+/* BOTONES REDES SOCIALES  */
+.buttons-about {
+	margin-top: 4em;
 	text-align: center;
 }
 
-.buttons a {
+.buttons-about a {
 	margin-right: 30px;
 	width: 64px;
 	height: 64px;
-	font-size: 24px;
 	display: inline-block;
 	position: relative;
 	line-height: 64px;
 	background-color: #eaeaea;
-	background-image: linear-gradient(to bottom, #f6f6f6, #eaeaea);
+	background-image: linear-gradient(to bottom, #273345, #18202d); /* SOMBRA BOTÓN */
 	border-radius: 32px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
 }
+.buttons-about i{
+	background-color: #282c34; /* COLOR FONDO BOTÓN */
+	border-radius:100%;
 
-.buttons a:active {
-	top: 1px;
-	background-image: linear-gradient(to bottom, #eaeaea, #f6f6f6);
 }
 
-.buttons a::before {
+
+
+.buttons-about a:active {
+/* 	top: 1px; */
+	/* background-image: linear-gradient(to bottom, #eaeaea, #f6f6f6); */
+}
+
+.buttons-about a::before {
 	content: '';
 	position: absolute;
 	z-index: -1;
@@ -35,32 +172,82 @@
 	right: -8px;
 	bottom: -8px;
 	left: -8px;
-	background-color: #eaeaea;
+	background-color: #343941;/* COLOR ARO DEL BOTÓN */
 	border-radius: 140px;
 	opacity: 0.5;
 }
 
-.buttons a:hover {
+.buttons-about a:hover {
 	background-color: #c6f0f8;
 }
 
-.buttons a:hover::before {
+.buttons-about a:hover::before {
 	opacity: 1;
 }
 
 .linkedin:hover::before {
-	background-color: #dae1f0;
+	background-color: #1f2229;
 }
 
 .github:hover::before {
-	background-color: #dae1f0;
+	background-color: #1f2229;
 }
 
-.gmail:hover::before {
-	background-color: #dae1f0;
+.btn-email:hover::before {
+	background-color: #1f2229;
 }
 
 
+.icon-linkedin-about svg,
+.icon-github-about svg,
+.icon-gmail-about svg{
+  color: #608dd0;	/* COLOR ICON */
+  font-size: 35px;
+  width:100%;
+}
+
+.icon-linkedin-about,
+.icon-github-about,
+.icon-gmail-about {
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+height:100%;
+}
+
+.buttons-about a{
+	position:relative;
+}
+
+.msj-copiar-email{
+display:none;
+}
+
+.btn-email:hover .msj-copiar-email{
+	position:absolute;
+	background-color:#3e4452 ;
+	padding:.4em;
+	border-radius: 5px;
+	line-height: initial;
+	width: 220px;
+	top:-45px;
+	left: 50%;
+	transform: translateX(-50%);
+	display:initial;
+	font-size:15px;
+	font-weight: 400;
+}
+
+
+.email-copiado{
+	background-color:rgb(43, 105, 56)!important;
+	width: 115px!important;
+}
+
+
+
+/* 
 .footer {
 	width: 600px;
 	margin: auto;
@@ -82,9 +269,4 @@
 	border-bottom: 1px dashed #cdcdcd;
 }
 
-.fa-linkedin-in,
-.fa-github,
-.fa-envelope{
-  color: #551a8b;
-}
-
+*/

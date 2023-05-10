@@ -6,9 +6,9 @@ const Modal = ({ message, id }) => {
   return ReactDOM.createPortal(
     <div className="modal">
       <div className="modal-content">
-        <p>{message}</p>
+        <p className="mensaje-modal">{message}</p>
 
-        <a href={`http://localhost:3000/pokemon/${id}`}>Aceptar</a>
+        <a className="btn-modal" href={`http://localhost:3000/pokemon/${id}`}>Aceptar</a>
       </div>
     </div>,
     document.getElementById('modal-root')

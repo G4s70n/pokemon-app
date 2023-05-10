@@ -4,6 +4,8 @@
     flex-direction: column;
 }
 
+
+
 .container-buttons button{
     margin: .3em 0px;
     color: #c2c2c4;
@@ -17,16 +19,28 @@
 }
 
 
-.container-buttons i{
+.icon-login-1-navBar,
+.icon-sing-up-narBar{
     font-size: 14px;
+    margin-right: -.4em;
+}
+
+.icon-user-navBar {
+    font-size: 20px!important;
+    width:100%;
+}
+
+.profile-icon-button{
+    display: flex;
+    align-items: center;
 }
 
 
 .profile-icon-button:hover{
-    color: #f36e94;
+    color: #4bc9ff;
 }
 .container-buttons button:hover{
-    color: #f36e94;
+    color: #4bc9ff;
 }
 
 
@@ -38,8 +52,8 @@
     height: 40px;
     padding: 0px;
     margin-top: 10px;
-    margin-right: 1em;
-    color: #f36e94;
+    margin-right: .5em;
+    color: #4bc9ff;
     align-items: center;
     margin-bottom: 1em;
 }
@@ -59,7 +73,7 @@
 }
 
 .profile-container span{
-    margin-left: .8em;
+    margin-left: .3em;
 }
 
 .profile-container button{
@@ -71,7 +85,7 @@
 }
 
 .profile-container button:hover{
-    background-color: #4a5882;
+    background-color: #4bc9ff;
     cursor: pointer;
 }
 

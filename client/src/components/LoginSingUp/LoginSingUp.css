@@ -1,0 +1,19 @@
+.no-logueado-container{
+    text-align:center;
+    margin-top:3em;
+}
+
+.no-logueado-btn{
+    appearance: none;
+    background-color: #4e1d88;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius:20px;
+    padding: 10px 15px;
+    margin-top: 1em;
+}
+
+.no-logueado-btn:hover{
+    background-image: linear-gradient(to bottom right, #4e1d88, #6c2db8);
+}

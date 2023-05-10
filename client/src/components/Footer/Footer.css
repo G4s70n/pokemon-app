@@ -1,5 +1,5 @@
 footer{
-    background-color: #1c2431;
+    background: #21252b ;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -7,7 +7,7 @@ footer{
     bottom: 0px;
     z-index: 10;
     width: 100%;
-    border-top: 1px solid #5c5d60;
+     border-top: 1px solid #1d1f23; 
 }
 
 footer a, span{
