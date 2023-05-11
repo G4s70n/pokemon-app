@@ -5,16 +5,17 @@ const path = require('path');
 
 
 
+
+
 // Obtenemos las credenciales de la base de datos desde el archivo .env
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-
-
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+//URL localhost:
+//const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+const sequelize = new Sequelize(`postgresql://${DB_USER}:${DB_PASSWORD}@containers-us-west-72.railway.app:${DB_HOST}/${DB_NAME}`, {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
-
 
 
 const basename = path.basename(__filename);
