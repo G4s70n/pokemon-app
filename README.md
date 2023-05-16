@@ -7,9 +7,12 @@ SPA que permite explorar información sobre Pokémons. La aplicación cuenta con
 - Creación de Pokémons inventados con generación de imágenes mediante inteligencia artificial.
 - Interfaz de usuario intuitiva y fluida.
 
+![Captura pantalla](https://i.postimg.cc/ZYBhtsJy/download.png)
+
+
 ## Tecnologías Utilizadas
 
-**Base de datos**: PostgreSQL.
+**Base de datos**: PostgreSQL
 
 **Backend**:
 - Node.js 
