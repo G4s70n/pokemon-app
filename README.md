@@ -9,7 +9,7 @@ SPA que permite explorar información sobre Pokémons. La aplicación cuenta con
 
 ## Tecnologías Utilizadas
 
-**Backend**: PostgreSQL.
+**Base de datos**: PostgreSQL.
 
 **Backend**:
 - Node.js 
