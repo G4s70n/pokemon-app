@@ -1,33 +1,34 @@
-# pokemon-api
-En construcción
+# Proyecto de Aplicación de Pokémons
+
+SPA que permite explorar información sobre Pokémons. La aplicación cuenta con las siguientes características:
+
+- Acceso a información de los primeros 100 Pokémons mediante integración con la API PokeAPI.
+- Filtrado, ordenamiento y búsqueda de Pokémons.
+- Creación de Pokémons inventados con generación de imágenes mediante inteligencia artificial.
+- Interfaz de usuario intuitiva y fluida.
+
+## Tecnologías Utilizadas
+
+**Backend**: PostgreSQL.
+
+**Backend**:
+- Node.js 
+- Express.js
+- Sequelize 
+
+**Frontend**:
+- JavaScript
+- React
+- Redux
+- CSS
+- HTML
 
 
-GET
-    request all pokemons:        http://localhost:3001/pokemons
 
-    request by name:            http://localhost:3001/pokemons?name=pedo
+## Demostración en Video
 
-    request by ID:              http://localhost:3001/pokemons/:id
+Puedes ver una demostración de la aplicación en funcionamiento en el siguiente video:
 
-    request types:           http://localhost:3001/pokemons/types
+[![Video de Demostración](link-a-la-miniatura-del-video)](enlace-al-video-completo)
 
-    request evolutions by ID: http://localhost:3001/pokemons/evolutions/:id
-
-
-
-POST
-    created:    http://localhost:3001/pokemons
-    {
-      "name": "pedo",
-      "image": "http://caca.com",
-      "species": "dfs",
-      "hp":43,
-      "attack":545 ,
-      "defense":45 ,
-      "speed":54 ,
-      "specialAttack": 656,
-      "specialDefense": 565,
-      "weight":656 ,
-      "height": 656,
-      "types": ["tierra", "aire"]
-    }
+¡Espero que te haya gustado!

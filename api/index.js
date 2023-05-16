@@ -1,13 +1,14 @@
 const server = require("./src/app");
 const { conn } = require("./src/db");
-
+const port = process.env.PORT || "3001";
 
 
 conn.sync({ force: false }).then(() => {
-  server.listen("3001", () => {
+  server.listen(port, () => {
     console.log("Server: servidor corriendo en puerto 3001");
   });
 });
+
 
 
 
