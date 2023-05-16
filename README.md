@@ -4,7 +4,7 @@
 
 SPA que permite explorar información sobre Pokémons. La aplicación cuenta con las siguientes características:
 <br>
-
+<br>
 - Acceso a información de los primeros 100 Pokémons mediante integración con la API PokeAPI.
 - Filtrado, ordenamiento y búsqueda de Pokémons.
 - Creación de Pokémons inventados con generación de imágenes mediante inteligencia artificial.
