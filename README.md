@@ -3,6 +3,7 @@
 <br>
 
 SPA que permite explorar información sobre Pokémons. La aplicación cuenta con las siguientes características:
+<br>
 
 - Acceso a información de los primeros 100 Pokémons mediante integración con la API PokeAPI.
 - Filtrado, ordenamiento y búsqueda de Pokémons.
@@ -40,4 +41,6 @@ Puedes ver una demostración de la aplicación en funcionamiento en el siguiente
 
 [![Video de Demostración](link-a-la-miniatura-del-video)](enlace-al-video-completo)
 
-¡Espero que te haya gustado!
+<br>
+Podés probarla acá: [Pokémon SPA](https://g4s70n.github.io/poke/#/)
+
