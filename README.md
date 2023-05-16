@@ -1,4 +1,6 @@
 # Proyecto de Aplicación de Pokémons
+<br>
+<br>
 
 SPA que permite explorar información sobre Pokémons. La aplicación cuenta con las siguientes características:
 
