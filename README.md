@@ -42,5 +42,5 @@ Puedes ver una demostración de la aplicación en funcionamiento en el siguiente
 [![Video de Demostración](link-a-la-miniatura-del-video)](enlace-al-video-completo)
 
 <br>
-Podés probarla acá: [Pokémon SPA](https://g4s70n.github.io/poke/#/)
+Podés probarla acá: https://g4s70n.github.io/poke
 
