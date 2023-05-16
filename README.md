@@ -6,9 +6,13 @@ SPA que permite explorar información sobre Pokémons. La aplicación cuenta con
 - Filtrado, ordenamiento y búsqueda de Pokémons.
 - Creación de Pokémons inventados con generación de imágenes mediante inteligencia artificial.
 - Interfaz de usuario intuitiva y fluida.
+<br>
+<br>
+
 
 ![Captura pantalla](https://i.postimg.cc/ZYBhtsJy/download.png)
-
+<br>
+<br>
 
 ## Tecnologías Utilizadas
 
