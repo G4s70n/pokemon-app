@@ -39,8 +39,8 @@ SPA que permite explorar información sobre Pokémons. La aplicación cuenta con
 
 Puedes ver una demostración de la aplicación en funcionamiento en el siguiente video:
 
-[![Video de Demostración](link-a-la-miniatura-del-video)](enlace-al-video-completo)
+[![Video de Demostración](https://i.postimg.cc/763NTVYH/pokeApp.jpg)](https://www.youtube.com/watch?v=MokPrB3BFos&ab_channel=Gast%C3%B3n)
+
 
 <br>
 Podés probarla acá: https://g4s70n.github.io/poke
-
