@@ -12,7 +12,6 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 const domain =import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId =import.meta.env.VITE_AUTHO_CLIENT_ID;
 
-console.log(domain, clientId);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 
